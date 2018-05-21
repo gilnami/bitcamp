@@ -12,26 +12,31 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 // 애노테이션 대신에 web.xml에 배치정보를 설정한다.
-// @WebFilter("/step09/ex1/exam02")
+// @WebFilter("/step09/ex1/exam03")
 public class Filter3 implements Filter{
     FilterConfig config;
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.config = filterConfig;
-        System.out.println("Filter2.init()");
+        System.out.println("Filter3.init()");
     }
     
     @Override
     public void destroy() {
-        System.out.println("Filter2.destroy()");
+        System.out.println("Filter3.destroy()");
     }
     
     @Override
     public void doFilter(
             ServletRequest request, 
             ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        // FilterConfig
+        // FilterConfig 도구를 사용하여 web.xml에 설정된 파라미터 값을 가져올 수 있다.
+        
+        String v1 = config.getInitParameter("v1");
+        String v2 = config.getInitParameter("v2");
+        System.out.printf("v1=%s, v2=%s", v1, v2);
+        
         chain.doFilter(request, response);
     
     }
