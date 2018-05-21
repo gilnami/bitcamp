@@ -14,10 +14,15 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("/*") // 모든 서블릿을 실행하기 전에 작업을 수행할 필터
 public class CharacterEncodingFilter implements Filter{
     FilterConfig config;
+    String encoding = "UTF-8";
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.config = filterConfig;
+        
+        if (config.getInitParameter("encoding") != null) {
+            this.encoding = config.getInitParameter("encoding");
+        }
     }
     
     @Override
@@ -31,7 +36,7 @@ public class CharacterEncodingFilter implements Filter{
             FilterChain chain)
             throws IOException, ServletException {
         // 서블릿을 실행하기 전에 클라이언트가 보낸 데이터에 대해 문자표를 지정한다.
-        request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding(this.encoding);
         response.setContentType("text/html;charset=utf-8");
         
         // 다음 필터가 있다면 그 플터의 doFilter()를 호출하고,
