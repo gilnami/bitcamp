@@ -32,7 +32,6 @@ public class ClassroomViewServlet extends HttpServlet {
 
         int no = Integer.parseInt(request.getParameter("no"));
         
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         out.println("<!DOCTYPE html>");

@@ -29,7 +29,6 @@ public class MemberAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
         
         try {
             Member member = new Member();
