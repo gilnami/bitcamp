@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/step08/ex3/putter")
-public class Putter extends HttpServlet {
+@WebServlet("/step08/ex3/footer")
+public class footer extends HttpServlet {
     @Override
     protected void doGet(
             HttpServletRequest request, 
@@ -21,8 +21,9 @@ public class Putter extends HttpServlet {
         
         PrintWriter out = response.getWriter();
         
-        out.println("<div>");
-        out.println("    <p>copyright. <address>서울시 서초구 교육센터</address></p>");
+        out.println("<div id ='footer'>");
+        out.println("    <p>copyright &copy; 2018 자바 106기"
+                + "<address>서울시 서초구 교육센터</address></p>");
         out.println("</div>");
     }
 }
