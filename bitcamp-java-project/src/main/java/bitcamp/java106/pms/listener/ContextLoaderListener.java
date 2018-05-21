@@ -17,7 +17,7 @@ public class ContextLoaderListener implements ServletContextListener{
     
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        // 서블릿 컨테이너가 시작되면 스프링 IoC 컨테이너를 준비한다.
+        // 서블릿 컨테이너가 시작되면 스프링 IoC 컨테이너를 준비한다.0
         ApplicationContext iocContainer = 
                 new AnnotationConfigApplicationContext(AppConfig.class);
         
