@@ -12,29 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/step08/ex3/exam01")
-public class Exam01 extends HttpServlet {
+@WebServlet("/step08/ex3/putter")
+public class Putter extends HttpServlet {
     @Override
     protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
-        
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("  <meta charset='UTF-8'>");
-        out.println("  <title>계산결과</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.printf("<h1>%s 님 반갑습니다.</h1>\n", name);
-        out.println("</body>");
-        out.println("</html>");
+        out.println("<div>");
+        out.println("    <p>copyright. <address>서울시 서초구 교육센터</address></p>");
+        out.println("</div>");
     }
 }
 
