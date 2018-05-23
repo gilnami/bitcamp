@@ -28,31 +28,11 @@ public class Exam02 extends HttpServlet {
         //    세션이 없다는 뜻은 웹브라우저가 세션 아이디를 알려주지 않았다는 뜻이다.
         HttpSession session = request.getSession();
         
-        // 2)세션에 값 저장
-        // => 서버쪽에 저장하는 것이기 때문에 어떤 값이라도 저장할 수 있다.
-        //    즉 문자열 외에 숫자, 객체 모두 저장할 수 있다.
-        session.setAttribute("s1", "aaa");
-        session.setAttribute("s2", 200);// auto-boxing을 수행하여 객체로 변환한 후 저장된다.
-        session.setAttribute("s3", new Date());
-        
+        // 2)세션에 저장된 값 꺼내기
         response.setContentType("text/plain;charset=utf-8");
         PrintWriter out = response.getWriter();
-        out.println("세션을 만들고 세션에 값으 저장했습니다.");
-        out.println("그리고 세션의 아이디를 쿠키로 보냈습니다.");
-        
-        // 세션 생성
-        // - getSession()을 호출하면,
-        //   우선 웹브라우저가 보낸 쿠키 중에서 세션 아이디가 있는지 확인한다.
-        //   만약 없다면 새 세션 객체(HttpSession)를 생성한 후 그 세션 객체를 리턴한다.
-        // - 응답할 때 새로 생성한 세션 객체의 아이디를 웹브라우저로 쿠키에 담아 전달한다.
-        //
-        // HTTP 응답 프로토콜 예:
-        /*
-        HTTP/1.1 200
-        Set-Cookie: JSESSIONID=45B8D7FAA6EF341D7E9E98B694F7CD17; Path=/java106-web01; HttpOnly
-        Content-Type: text/plain;charset=utf-8
-        Content-Length: 119
-        Date: Wed, 23 May 2018 05:28:48 GMT
-        */
+        out.printf("s1=%s\n", session.getAttribute("s1"));
+        out.printf("s2=%s\n", session.getAttribute("s2"));
+        out.printf("s3=%s\n", session.getAttribute("s3"));
     }
 }
