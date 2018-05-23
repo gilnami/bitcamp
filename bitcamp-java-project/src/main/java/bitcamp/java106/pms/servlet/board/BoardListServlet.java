@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 
 import bitcamp.java106.pms.dao.BoardDao;
 import bitcamp.java106.pms.domain.Board;
+import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
@@ -48,7 +50,12 @@ public class BoardListServlet extends HttpServlet {
         out.println("<title>게시물 목록</title>");
         out.println("</head>");
         out.println("<body>");
+        
+        request.getRequestDispatcher("/header").include(request, response);
+        
         out.println("<h1>게시물 목록</h1>");
+        
+        
         try {
             List<Board> list = boardDao.selectList();
             
