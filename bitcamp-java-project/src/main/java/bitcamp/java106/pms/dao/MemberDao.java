@@ -1,5 +1,6 @@
 package bitcamp.java106.pms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -55,7 +56,18 @@ public class MemberDao {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
             return sqlSession.selectOne(
                     "bitcamp.java106.pms.dao.MemberDao.selectOne", id);
-        }   
+        }
+    }
+    
+    public Member selectOneWithPassword(String id, String password) throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            HashMap<String,String> params = new HashMap<>();
+            params.put("id", id);
+            params.put("password", password);
+            
+            return sqlSession.selectOne(
+                    "bitcamp.java106.pms.dao.MemberDao.selectOneWithPassword", params);
+        }
     }    
 }
 
