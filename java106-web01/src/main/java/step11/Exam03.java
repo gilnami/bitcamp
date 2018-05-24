@@ -2,6 +2,7 @@
 package step11;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
-@WebServlet("/step11/exam01")
-public class Exam01 extends HttpServlet{
+@WebServlet("/step11/exam03")
+public class Exam03 extends HttpServlet{
     @Override
     protected void doGet(
             HttpServletRequest request, 
@@ -21,11 +22,10 @@ public class Exam01 extends HttpServlet{
         ServletContext sc = this.getServletContext();
         HttpSession session = request.getSession();
         
-        sc.setAttribute("v1", "aaa");
-        session.setAttribute("v2", "bbb");
-        request.setAttribute("v3", "ccc");
-        
-        request.getRequestDispatcher("/step11/exam02").forward(request, response);
-        
+        response.setContentType("text/plain;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.printf("v1=%s\n", sc.getAttribute("v1"));
+        out.printf("v2=%s\n", session.getAttribute("v2"));
+        out.printf("v3=%s\n", request.getAttribute("v3"));
     }
 }
