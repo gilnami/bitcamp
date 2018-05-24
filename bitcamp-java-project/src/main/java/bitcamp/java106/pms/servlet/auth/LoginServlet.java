@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionListener;
 
 import org.springframework.context.ApplicationContext;
 
@@ -34,7 +35,13 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        HttpSession session = request.getSession();
+        
+        // 이 서블릿을 요청하기 전 페이지의 URL을 세션에 보관한다.
+        // => 이 URL은 로그인을 처리한 후에 refresh 할 때 사용할 것이다.
+        session.setAttribute("refererUrl", request.getHeader("Referer"));
+        
         // 웹브라우저가 "id"라는 쿠키를 보냈으면 입력폼을 출력할 때 사용한다.
         String id = "";
         Cookie[] cookies = request.getCookies();
@@ -98,8 +105,17 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             if (member != null) {
-                response.sendRedirect(request.getContextPath());
                 session.setAttribute("loginUser", member);
+                
+                // 로그인 하기전의 페이지로 이동
+                String refererUrl = (String) session.getAttribute("refererUrl");
+                if (refererUrl == null) { //이전페이지가 없다면 메인화면으로 이동
+                    response.sendRedirect(request.getContextPath());
+                } else { // 이전페이지가 있다면 그 페이지로 이동시킨다.
+                    response.sendRedirect(refererUrl);
+                }
+                return;
+                
             } else {
                 session.invalidate();
                 
