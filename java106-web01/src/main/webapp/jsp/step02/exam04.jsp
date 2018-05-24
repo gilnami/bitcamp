@@ -3,31 +3,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title>exam04</title>
 </head>
 <body>
-<h1>표현식(expression element)</h1>
+<h1>스크립트릿(scriptlet element)</h1>
 <pre>
-[표현식(expression)]
-- 결과를 리턴하는 자바 코드이다.
-- 예) 변수, 계산식, 값을 리턴하는 메서드 호출 등 
-- 표현식이 아닌 예) 값을 리턴하지 않는 메서드 호출 등
+[스크립트깃 : script + let = 자바 코드 조각]
+ - 생성할 자바 소스 파일에 자바 코드를 그대로 넣고 싶을 때 사용한다
 
-JSP 코드
-&lt;%= 표현식 %>
-
-자바 코드
-  위의 JSP 코드는 다음과 같이 자바 출력문으로 만든다.
-  out.print(표현식);
+[JSP 코드]
+ &lt;%자바코드%>
+[자바 코드] 
+ 위의 태그 안에 작성한 자바 코드는 선언된 순서대로 자바 소스 파일에 복사된다
 </pre>
+aaa
+<% int i = 10; %>
+bbb
+<%i = i * 20; %>
+ccc
+<%
+if (i > 10) {
+    out.println("10이상입니다.");
+}else {
+    out.println("10이하입니다.");
+}
+%>
+ddd
+<%
 
-aaa, <%=2+3%>, bbb, <%=System.currentTimeMillis()%>, ccc
-<%--
-위의 JSP 코드는 다음의 자바 출력문으로 만든다.
-<%=System.currentTimeMillis()%>
-out.print(System.currentTimeMillis());
-out.print(여기에 넣을 수 잇는 자바코드를 <%= %>안에 작성하세요!);
---%>
+
+%>
 </body>
 </html>
