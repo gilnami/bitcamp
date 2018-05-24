@@ -49,28 +49,10 @@ public class TeamMemberListServlet extends HttpServlet {
         
         try {
             List<Member> members = teamMemberDao.selectListWithEmail(name);
-            
-            out.println("<h2>회원 목록</h2>");
-            out.println("<form action='member/add' method='post'>");
-            out.println("<input type='text' name='memberId' placeholder='회원아이디'>");
-            out.printf("<input type='hidden' name='teamName' value='%s'>\n", name);
-            out.println("<button>추가</button>");
-            out.println("</form>");
-            out.println("<table border='1'>");
-            out.println("<tr><th>아이디</th><th>이메일</th><th> </th></tr>");
-            for (Member member : members) {
-                out.printf("<tr>"
-                        + "<td>%s</td>"
-                        + "<td>%s</td>"
-                        + "<td><a href='member/delete?teamName=%s&memberId=%s'>삭제</a></td>"
-                        + "</tr>\n", 
-                        member.getId(), 
-                        member.getEmail(),
-                        name,
-                        member.getId());
-            }
-            out.println("</table>");
-               
+            request.setAttribute("members", members);
+            request.setAttribute("name", name);
+            response.setContentType("text/html;charset=UTF-8");
+            request.getRequestDispatcher("/team/member/list.jsp").include(request, response);
         } catch (Exception e) {
             RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
