@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset=UTF-8">
-<title>exam01</title>
+<title>exam02</title>
 </head>
 <body>
 <h1>템플릿 데이터(template data)</h1>
