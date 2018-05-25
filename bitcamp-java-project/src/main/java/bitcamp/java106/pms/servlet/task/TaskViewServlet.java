@@ -43,7 +43,6 @@ public class TaskViewServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
         
         try {
             int no = Integer.parseInt(request.getParameter("no"));
@@ -55,7 +54,10 @@ public class TaskViewServlet extends HttpServlet {
             
             List<Member> members = teamMemberDao.selectListWithEmail(
                     task.getTeam().getName());
-
+            request.setAttribute("members", members);
+            request.setAttribute("task", task);
+            response.setContentType("text/html;charset=UTF-8");
+            request.getRequestDispatcher("/task/view.jsp").include(request, response);
         } catch (Exception e) {
             RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);

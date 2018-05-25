@@ -20,24 +20,24 @@
 Task task = (Task) request.getAttribute("task");
 %>
 <form action='update' method='post'>
-<input type='hidden' name='no' value='13'>
+<input type='hidden' name='no' value='<%=task.getNo()%>'>
 <table border='1'>
 <tr>
-    <th>팀명</th><td><input type='text' name='teamName' value='t1' readOnly></td>
+    <th>팀명</th><td><input type='text' name='teamName' value='<%=task.getTeam().getName()%>' readOnly></td>
 </tr>
 <tr>
-    <th>작업명</th><td><input type='text' name='title' value='11'></td>
+    <th>작업명</th><td><input type='text' name='title' value='<%=task.getTitle()%>'></td>
 </tr>
 <tr>
-    <th>시작일</th><td><input type='date' name='startDate' value='2018-04-30'></td></tr>
+    <th>시작일</th><td><input type='date' name='startDate' value='<%=task.getStartDate()%>'></td></tr>
 <tr>
-    <th>종료일</th><td><input type='date' name='endDate' value='2018-05-08'></td></tr>
+    <th>종료일</th><td><input type='date' name='endDate' value='<%=task.getEndDate()%>'></td></tr>
 <tr>
     <th>작업자</th>
     <td>
         <select name='memberId'>
             <option value=''>--선택 안함--</option>
-            <option selected>aaa</option>
+            <option selected><%=task.getWorker().getId()%></option>
         </select>
     </td>
 </tr>
@@ -50,7 +50,7 @@ Task task = (Task) request.getAttribute("task");
 </tr>
 </table>
 <button>변경</button> 
-<a href='delete?no=13&teamName=t1'>삭제</a>
+<a href='delete?no=<%=task.getNo()%>&teamName=<%=task.getTeam().getName()%>'>삭제</a>
 </form>
 </body>
 </html>
