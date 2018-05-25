@@ -15,5 +15,8 @@ jsp:forward
 <%--
 error 라는 파라미터가 있을 때 다른 JSP 페이지로 포워딩시켜 보자!
  --%>
+<%if (request.getParameter("error") != null){%>
+    <jsp:forward page="exam02_error.jsp"></jsp:forward>
+<%}%>
 </body>
 </html>

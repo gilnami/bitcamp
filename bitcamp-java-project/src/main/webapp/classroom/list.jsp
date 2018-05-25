@@ -11,10 +11,7 @@
 </head>
 <body>
 
-<%
-out.flush();
-request.getRequestDispatcher("/header.jsp").include(request, response);%>
-
+<jsp:include page="/header.jsp"/>
 <h1>강의 목록(MVC)</h1>
 <p><a href='form.html'>새 강의</a></p>
 <table border='1'>

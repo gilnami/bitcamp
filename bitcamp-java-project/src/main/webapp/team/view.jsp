@@ -10,10 +10,7 @@
 </head>
 <body>
 
-<%
-out.flush();
-request.getRequestDispatcher("/header.jsp").include(request, response);%>
-
+<jsp:include page="/header.jsp"/>
 <h1>팀 보기(MVC)</h1>
 <%
 Team team = (Team)request.getAttribute("team");
@@ -49,12 +46,7 @@ Team team = (Team)request.getAttribute("team");
 <a href='../task/list?teamName=<%=team.getName()%>'>작업목록</a>
 </p>
 </form>
-
-<%
-out.flush();
-request.getRequestDispatcher("/team/member/list.jsp").include(request, response);%>
-
+<jsp:include page="/team/member/list.jsp"/>
 </body>
 </html>
-
     
