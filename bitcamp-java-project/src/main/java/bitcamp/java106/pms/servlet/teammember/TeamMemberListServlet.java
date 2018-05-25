@@ -1,10 +1,8 @@
 package bitcamp.java106.pms.servlet.teammember;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,22 +34,11 @@ public class TeamMemberListServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
 
-        // including 하기 전의 서블릿에서 문자셋을 지정할 것이고
-        // 이미 getParameter()를 호출했을 것이기 때문에 다음 코드는 의미가 없다.
-        //request.setCharacterEncoding("UTF-8");
-        
         String name = request.getParameter("name");
 
-        // including 하기 전의 서블릿에서 콘텐트 타입을 설정했을 것이기 때문에 다음 코드는 의미가 없다.
-        //response.setContentType("text/html;charset=UTF-8");
-        
-        PrintWriter out = response.getWriter();
-        
         try {
             List<Member> members = teamMemberDao.selectListWithEmail(name);
             request.setAttribute("members", members);
-            request.setAttribute("name", name);
-            response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/team/member/list.jsp").include(request, response);
         } catch (Exception e) {
             request.setAttribute("error", e);
@@ -61,4 +48,5 @@ public class TeamMemberListServlet extends HttpServlet {
     }
 }
 
+//ver 42 - JSP 적용
 //ver 39 - forward 적용

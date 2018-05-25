@@ -13,7 +13,6 @@ public class Team implements Serializable {
     private Date startDate;
     private Date endDate;
     private List<Member> members;
-    
 
     public List<Member> getMembers() {
         return members;

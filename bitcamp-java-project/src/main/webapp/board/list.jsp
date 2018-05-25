@@ -3,25 +3,27 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='UTF-8'>
-<title>게시물 목록(MVC)</title>
+<title>게시물 목록</title>
 </head>
 <body>
-<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
+
+<%
+out.flush();
+request.getRequestDispatcher("/header.jsp").include(request, response);%>
+
 <h1>게시물 목록(MVC)</h1>
 <p><a href='form.html'>새 글</a></p>
 <table border='1'>
 <tr>
     <th>번호</th><th>제목</th><th>등록일</th>
 </tr>
-
 <%
 List<Board> list = (List<Board>)request.getAttribute("list");
-for(Board board : list) {
+for (Board board : list) {
 %>
 <tr>
     <td><%=board.getNo()%></td>
@@ -32,4 +34,3 @@ for(Board board : list) {
 </table>
 </body>
 </html>
-    

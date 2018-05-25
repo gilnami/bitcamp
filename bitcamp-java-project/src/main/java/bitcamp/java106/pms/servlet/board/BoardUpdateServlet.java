@@ -2,7 +2,6 @@ package bitcamp.java106.pms.servlet.board;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +54,7 @@ public class BoardUpdateServlet extends HttpServlet {
     
 }
 
+//ver 42 - JSP 적용
 //ver 40 - 필터 적용
 //ver 39 - forward 적용
 //ver 38 - redirect 적용

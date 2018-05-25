@@ -2,7 +2,6 @@ package bitcamp.java106.pms.servlet.member;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +50,7 @@ public class MemberDeleteServlet extends HttpServlet {
     
 }
 
+//ver 42 - JSP 적용
 //ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 31 - JDBC API가 적용된 DAO 사용

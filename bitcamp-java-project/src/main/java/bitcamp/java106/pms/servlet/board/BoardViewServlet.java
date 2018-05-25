@@ -1,9 +1,7 @@
 package bitcamp.java106.pms.servlet.board;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +40,10 @@ public class BoardViewServlet extends HttpServlet {
                 throw new Exception("유효하지 않은 게시물 번호입니다.");
             }
             request.setAttribute("board", board);
+
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/board/view.jsp").include(request, response);
+            
         } catch (Exception e) {
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 상세조회 실패!");
@@ -52,6 +52,7 @@ public class BoardViewServlet extends HttpServlet {
     }
 }
 
+//ver 42 - JSP 적용
 //ver 39 - forward 적용
 //ver 37 - BoardViewController를 서블릿으로 변경
 //         HTML로 출력 

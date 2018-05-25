@@ -1,10 +1,8 @@
 package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 
 import bitcamp.java106.pms.dao.TeamDao;
-import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
@@ -22,7 +18,6 @@ import bitcamp.java106.pms.support.WebApplicationContextUtils;
 public class TeamViewServlet01 extends HttpServlet {
 
     TeamDao teamDao;
-    TeamMemberDao teamMemberDao;
     
     @Override
     public void init() throws ServletException {
@@ -45,7 +40,7 @@ public class TeamViewServlet01 extends HttpServlet {
                 throw new Exception("유효하지 않은 팀입니다.");
             }
             request.setAttribute("team", team);
-
+            
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/team/view.jsp").include(request, response);
                

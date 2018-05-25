@@ -2,7 +2,6 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +9,14 @@
 <title>게시물 보기</title>
 </head>
 <body>
-<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
+
+<%
+out.flush();
+request.getRequestDispatcher("/header.jsp").include(request, response);%>
+
 <h1>게시물 보기(MVC)</h1>
 <%
-Board board = (Board) request.getAttribute("board");
+Board board = (Board)request.getAttribute("board");
 %>
 <form action='update' method='post'>
 <table border='1'>
