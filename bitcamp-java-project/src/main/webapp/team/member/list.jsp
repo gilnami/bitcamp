@@ -1,3 +1,4 @@
+<%@page import="bitcamp.java106.pms.domain.Team"%>
 <%@page import="bitcamp.java106.pms.domain.Member"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" 
@@ -6,6 +7,7 @@
 
 <h2>회원 목록</h2>
 <%
+Team tema = (Team)request.getAttribute("team");
 List<Member> members = (List<Member>)request.getAttribute("members");
 %>
 <form action='member/add' method='post'>

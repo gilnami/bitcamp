@@ -22,7 +22,6 @@ import bitcamp.java106.pms.support.WebApplicationContextUtils;
 public class TeamViewServlet extends HttpServlet {
 
     TeamDao teamDao;
-    TeamMemberDao teamMemberDao;
     
     @Override
     public void init() throws ServletException {
@@ -30,7 +29,6 @@ public class TeamViewServlet extends HttpServlet {
                 WebApplicationContextUtils.getWebApplicationContext(
                         this.getServletContext()); 
         teamDao = iocContainer.getBean(TeamDao.class);
-        teamMemberDao = iocContainer.getBean(TeamMemberDao.class);
     }
     
     @Override
@@ -41,16 +39,12 @@ public class TeamViewServlet extends HttpServlet {
         String name = request.getParameter("name");
         
         try {
-            Team team = teamDao.selectOne(name);
+            Team team = teamDao.selectOneWithMembers(name);
             if (team == null) {
                 throw new Exception("유효하지 않은 팀입니다.");
             }
             request.setAttribute("team", team);
             
-            List<Member> members = teamMemberDao.selectListWithEmail(name);
-            request.setAttribute("members", members);
-            
-
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/team/view.jsp").include(request, response);
                
