@@ -18,8 +18,8 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
-@WebServlet("/team/view")
-public class TeamViewServlet extends HttpServlet {
+//@WebServlet("/team/view")
+public class TeamViewServlet01 extends HttpServlet {
 
     TeamDao teamDao;
     TeamMemberDao teamMemberDao;
@@ -30,7 +30,6 @@ public class TeamViewServlet extends HttpServlet {
                 WebApplicationContextUtils.getWebApplicationContext(
                         this.getServletContext()); 
         teamDao = iocContainer.getBean(TeamDao.class);
-        teamMemberDao = iocContainer.getBean(TeamMemberDao.class);
     }
     
     @Override
@@ -46,10 +45,6 @@ public class TeamViewServlet extends HttpServlet {
                 throw new Exception("유효하지 않은 팀입니다.");
             }
             request.setAttribute("team", team);
-            
-            List<Member> members = teamMemberDao.selectListWithEmail(name);
-            request.setAttribute("members", members);
-            
 
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/team/view.jsp").include(request, response);

@@ -49,7 +49,8 @@ Task task = (Task) request.getAttribute("task");
 </tr>
 </table>
 <button>변경</button> 
-<a href='delete?no=<%=task.getNo()%>&teamName=<%=task.getTeam().getName()%>'>삭제</a>
+<a href='delete?no=<%=task.getNo()
+%>&teamName=<%=task.getTeam().getName()%>'>삭제</a>
 </form>
 </body>
 </html>

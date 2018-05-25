@@ -18,8 +18,8 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
-@WebServlet("/team/view")
-public class TeamViewServlet extends HttpServlet {
+//@WebServlet("/team/view")
+public class TeamViewServlet02 extends HttpServlet {
 
     TeamDao teamDao;
     TeamMemberDao teamMemberDao;
