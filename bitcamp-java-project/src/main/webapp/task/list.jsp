@@ -19,12 +19,15 @@
 <tr>
     <th>번호</th><th>작업명</th><th>기간</th><th>작업자</th>
 </tr>
+<jsp:useBean id="list" 
+    type="java.util.List<Task>" 
+    class="java.util.ArrayList"
+    scope="request"/>
 <%
-List<Task> list = (List<Task>)request.getAttribute("list");
 for (Task task : list) {
 %>
 <tr>
-    <td>10</td>    
+    <td><%=task.getNo()%></td>    
     <td><a href='view?no=<%=task.getNo()%>'><%=task.getTitle()%></a></td>    
     <td><%=task.getStartDate()%> ~ <%=task.getEndDate()%></td>    
     <td><%=task.getWorker().getId()%></td>

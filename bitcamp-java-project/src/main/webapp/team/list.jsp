@@ -19,8 +19,11 @@
 <tr>
     <th>팀명</th><th>최대인원</th><th>기간</th>
 </tr>
+<jsp:useBean id="list" 
+    type="java.util.List<Team>" 
+    class="java.util.ArrayList"
+    scope="request"/>
 <%
-List<Team> list = (List<Team>)request.getAttribute("list");
 for (Team team : list) {
 %>
 <tr>

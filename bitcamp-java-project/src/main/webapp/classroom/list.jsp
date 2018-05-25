@@ -18,8 +18,11 @@
 <tr>
     <th>번호</th><th>강의명</th><th>기간</th><th>강의실</th>
 </tr>
+<jsp:useBean id="list" 
+    type="java.util.List<Classroom>" 
+    class="java.util.ArrayList"
+    scope="request"/>
 <%
-List<Classroom> list = (List<Classroom>)request.getAttribute("list");
 for (Classroom classroom : list) {
 %>
 <tr>

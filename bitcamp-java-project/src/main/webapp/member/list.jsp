@@ -18,8 +18,11 @@
 <tr>
     <th>아이디</th><th>이메일</th>
 </tr>
+<jsp:useBean id="list" 
+    type="java.util.List<Member>" 
+    class="java.util.ArrayList"
+    scope="request"/>
 <%
-List<Member> list = (List<Member>)request.getAttribute("list");
 for (Member member : list) {
 %>
 <tr>

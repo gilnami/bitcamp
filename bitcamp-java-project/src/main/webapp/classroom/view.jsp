@@ -12,9 +12,9 @@
 
 <jsp:include page="/header.jsp"/>
 <h1>강의 보기(MVC)</h1>
-<%
-Classroom classroom = (Classroom)request.getAttribute("classroom");
-%>
+<jsp:useBean id="classroom" 
+             class="bitcamp.java106.pms.domain.Classroom" 
+             scope="request"/>
 <form action='update' method='post'>
 <input type='hidden' name='no' value='<%=request.getParameter("no")%>'>
 <table border='1'>

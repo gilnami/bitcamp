@@ -12,9 +12,9 @@
 
 <jsp:include page="/header.jsp"/>
 <h1>팀 보기(MVC)</h1>
-<%
-Team team = (Team)request.getAttribute("team");
-%>
+<jsp:useBean id="team" 
+             class="bitcamp.java106.pms.domain.Team" 
+             scope="request"/>
 <form action='update' method='post'>
 <table border='1'>
 <tr>

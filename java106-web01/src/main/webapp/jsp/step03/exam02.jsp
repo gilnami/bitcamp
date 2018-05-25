@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset=UTF-8">
-<title>exam01</title>
+<title>exam02</title>
 </head>
 <body>
 <h1>JSP 전용태그 : forward</h1>
