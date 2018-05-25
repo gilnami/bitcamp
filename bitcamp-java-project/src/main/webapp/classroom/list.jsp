@@ -11,8 +11,7 @@
 <title>강의 목록</title>
 </head>
 <body>
-<div id='header'>
- <a href='/bitcamp-java-project/auth/login'>로그인</a></div>
+<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
 <h1>강의 목록(MVC)</h1>
 <p><a href='form.html'>새 강의</a></p>
 <table border='1'>

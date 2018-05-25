@@ -54,10 +54,9 @@ public class TeamMemberListServlet extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher("/team/member/list.jsp").include(request, response);
         } catch (Exception e) {
-            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "팀 멤버 조회 실패!");
-            요청배달자.forward(request, response);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 }

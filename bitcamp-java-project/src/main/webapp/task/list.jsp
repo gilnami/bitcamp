@@ -15,8 +15,7 @@
 List<Task> list = (List<Task>)request.getAttribute("list");
 String teamName = request.getParameter("teamName");
 %>
-<div id='header'>
- <a href='/bitcamp-java-project/auth/login'>로그인</a></div>
+<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
 <h1><a href='../team/view?name=<%=teamName%>'><%=teamName%></a>의 작업 목록</h1>
 <p><a href='add?teamName=<%=teamName%>'>새작업</a></p>
 <table border='1'>

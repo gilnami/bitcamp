@@ -64,10 +64,9 @@ public class TeamMemberAddServlet extends HttpServlet {
             // URL 인코딩과 URL 디코딩을 손수 해 줘야 한다.
             
         } catch (Exception e) {
-            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "팀 회원 등록 실패!");
-            요청배달자.forward(request, response);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
     

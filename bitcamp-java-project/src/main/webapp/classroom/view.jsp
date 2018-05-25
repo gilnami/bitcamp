@@ -10,8 +10,7 @@
 <title>강의 보기</title>
 </head>
 <body>
-<div id='header'>
- <a href='/bitcamp-java-project/auth/login'>로그인</a></div>
+<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
 <h1>강의 보기(MVC)</h1>
 <%
 Classroom classroom = (Classroom) request.getAttribute("classroom");

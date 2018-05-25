@@ -31,53 +31,7 @@ public class LoginServlet extends HttpServlet {
         ApplicationContext iocContainer = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
         memberDao = iocContainer.getBean(MemberDao.class);
     }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        
-        // 이 서블릿을 요청하기 전 페이지의 URL을 세션에 보관한다.
-        // => 이 URL은 로그인을 처리한 후에 refresh 할 때 사용할 것이다.
-        session.setAttribute("refererUrl", request.getHeader("Referer"));
-        
-        // 웹브라우저가 "id"라는 쿠키를 보냈으면 입력폼을 출력할 때 사용한다.
-        String id = "";
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("id")) {
-                    id = cookie.getValue();
-                    break;
-                }
-            }
-        }
-
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter out = response.getWriter();
-
-        out.println("<!DOCTYPE html>");
-        out.println("        <html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>로그인</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>로그인</h1>");
-        out.println("<form action='login' method='post'>");
-        out.println("<table border='1'>");
-        out.println("<tr><th>아이디</th>");
-        out.printf("   <td><input type='text' name='id' value='%s'></td></tr>", id);
-        out.println("<tr><th>암호</th>");
-        out.println("   <td><input type='password' name='password'></td></tr>");
-        out.println("</table>");
-        out.println("<p><input type='checkbox' name='saveId'>아이디 저장</p>");
-        out.println("<button>로그인</button>");
-        out.println("</form>");
-        out.println("</body>");
-        out.println("</html>");
-    }
+    
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -118,29 +72,13 @@ public class LoginServlet extends HttpServlet {
                 
             } else {
                 session.invalidate();
-                
                 response.setContentType("text/html;charset=UTF-8");
-                PrintWriter out = response.getWriter();
-
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<meta charset='UTF-8'>");
-                    out.printf("<meta http-equiv='Refresh' content='1;url=%s'>",
-                            request.getContextPath() + "/auth/login");
-                out.println("<title>로그인</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>로그인 실패</h1>");
-                out.println("<p>아이디 또는 암호가 맞지 않습니다.</p>");
-                out.println("</body>");
-                out.println("</html>");
+                request.getRequestDispatcher("/auth/fail.jsp").include(request, response);
             }
         } catch (Exception e) {
-            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "로그인 실패");
-            요청배달자.forward(request, response);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 }

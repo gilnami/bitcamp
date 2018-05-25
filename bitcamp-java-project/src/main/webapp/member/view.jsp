@@ -10,8 +10,7 @@
 <title>멤버 보기</title>
 </head>
 <body>
-<div id='header'>
- <a href='/bitcamp-java-project/auth/login'>로그인</a></div>
+<%request.getRequestDispatcher("/header.jsp").include(request, response);%>
 <h1>멤버 보기</h1>
 <%
 Member member = (Member) request.getAttribute("member");
