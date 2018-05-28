@@ -24,12 +24,13 @@
     scope="request"/>
 <%
 for (Classroom classroom : list) {
+    pageContext.setAttribute("classroom", classroom);
 %>
 <tr>
-    <td><%=classroom.getNo()%></td>
-    <td><a href='view?no=<%=classroom.getNo()%>'><%=classroom.getTitle()%></a></td>
-    <td><%=classroom.getStartDate()%>~<%=classroom.getEndDate()%></td>
-    <td><%=classroom.getRoom()%></td>
+    <td>${classroom.no}</td>
+    <td><a href='view?no=${classroom.no}'>${classroom.title}</a></td>
+    <td>${classroom.startDate}~${classroom.endDate}</td>
+    <td>${classroom.room}</td>
 </tr>
 <%}%>
 </table>

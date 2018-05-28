@@ -24,10 +24,11 @@
     scope="request"/>
 <%
 for (Member member : list) {
+    pageContext.setAttribute("member", member);
 %>
 <tr>
-    <td><a href='view?id=<%=member.getId()%>'><%=member.getId()%></a></td>
-    <td><%=member.getEmail()%></td>
+    <td><a href='view?id=${member.id}'>${member.id}</a></td>
+    <td>${member.email}</td>
 </tr>
 <%} %>
 </table>

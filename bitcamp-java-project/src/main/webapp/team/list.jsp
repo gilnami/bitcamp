@@ -25,11 +25,12 @@
     scope="request"/>
 <%
 for (Team team : list) {
+    pageContext.setAttribute("team", team);
 %>
 <tr>
-    <td><a href='view?name=<%=team.getName()%>'><%=team.getName()%></a></td>
-    <td><%=team.getMaxQty()%></td>
-    <td><%=team.getStartDate()%>~<%=team.getEndDate()%></td>
+    <td><a href='view?name=${team.name}'>${team.name}</a></td>
+    <td>${team.maxQty}</td>
+    <td>${team.startDate}~${team.endDate}</td>
 </tr>
 <%}%>
 </table>
