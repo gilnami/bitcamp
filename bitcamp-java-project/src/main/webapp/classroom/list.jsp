@@ -1,7 +1,7 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +9,8 @@
 <title>강의 목록</title>
 </head>
 <body>
-
 <jsp:include page="/header.jsp"/>
-<h1>강의 목록(MVC)</h1>
+<h1>강의 목록(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 <p><a href='form.html'>새 강의</a></p>
 <table border='1'>
 <tr>

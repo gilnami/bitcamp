@@ -1,10 +1,7 @@
-<%@page import="bitcamp.java106.pms.domain.Member"%>
-<%@page import="java.util.List"%>
-<%@page import="bitcamp.java106.pms.domain.Task"%>
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +9,10 @@
 <title>작업 보기</title>
 </head>
 <body>
-
 <jsp:include page="/header.jsp"/>
-<h1>작업 보기(MVC)</h1>
+<h1>작업 보기(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 <form action='update' method='post'>
-<input type='hidden' name='no' value='${task.no}'>
+<input type='hidden' name='no' value='${param.no}'>
 <table border='1'>
 <tr>
     <th>팀명</th>
@@ -37,8 +33,8 @@
     <td>
         <select name='memberId'>
             <option value=''>--선택 안함--</option>
-<c:forEach items="${members}" var="member">
-            <option ${member.id == task.worker.id ? "selected" : "" }>${member.id}</option>
+<c:forEach items="${members}" var="member">            
+            <option ${member.id == task.worker.id ? "selected" : ""}>${member.id}</option>
 </c:forEach>
         </select>
     </td>
@@ -52,7 +48,7 @@
 </tr>
 </table>
 <button>변경</button> 
-<a href='delete?no=${param.no}%>&teamName=${task.team.name}'>삭제</a>
+<a href='delete?no=${param.no}&teamName=${task.team.name}'>삭제</a>
 </form>
 </body>
 </html>

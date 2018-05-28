@@ -1,9 +1,9 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <c:if test="${header.referer != null and !header.referer.endsWith('/auth/login')}">
-    <c:set scope="session" var="refererUrl" value="${header.referer}"/>
+    <c:set scope="session" var="refererUrl" value="${header.referer}"/> 
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@
 <tr><th>암호</th>
     <td><input type='password' name='password'></td></tr>
 </table>
-<p><input type='checkbox' name='saveId'>아이디 저장</p>
+<p><input type='checkbox' name='saveId'> 아이디 저장</p>
 <button>로그인</button>
 </form>
 </body>

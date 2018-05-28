@@ -8,9 +8,8 @@
 <title>팀 보기</title>
 </head>
 <body>
-
 <jsp:include page="/header.jsp"/>
-<h1>팀 보기(MVC)</h1>
+<h1>팀 보기(MVC + JSP 전용 태그 + EL)</h1>
 <form action='update' method='post'>
 <table border='1'>
 <tr>
@@ -45,4 +44,5 @@
 <jsp:include page="/team/member/list.jsp"/>
 </body>
 </html>
+
     
