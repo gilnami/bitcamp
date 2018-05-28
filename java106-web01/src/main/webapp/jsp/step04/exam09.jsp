@@ -43,5 +43,18 @@ ${20 > 30}<br>
 ${20 gt 30}<br>
 ${20 >= 30}<br>
 ${20 ge 30}<br>
+
+<h2>empty 연산자</h2>
+저장소에 해당 이름으로 저장된 값이 있는지 없는지 검사할 때 사용한다.<br>
+<%
+pageContext.setAttribute("name", "안중근");
+pageContext.setAttribute("age", 20);
+%>
+${empty name}<br>
+${empty addr}<br>
+
+<h2>조건 연산자</h2>
+${20 > 30 ? "크다" : "작다"} <br>
+
 </body>
 </html>
