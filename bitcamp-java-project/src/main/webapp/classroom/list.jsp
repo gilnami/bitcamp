@@ -1,8 +1,7 @@
-<%@page import="bitcamp.java106.pms.domain.Classroom"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,21 +17,14 @@
 <tr>
     <th>번호</th><th>강의명</th><th>기간</th><th>강의실</th>
 </tr>
-<jsp:useBean id="list" 
-    type="java.util.List<Classroom>" 
-    class="java.util.ArrayList"
-    scope="request"/>
-<%
-for (Classroom classroom : list) {
-    pageContext.setAttribute("classroom", classroom);
-%>
+<c:forEach items="${list}" var="classroom">
 <tr>
     <td>${classroom.no}</td>
     <td><a href='view?no=${classroom.no}'>${classroom.title}</a></td>
     <td>${classroom.startDate}~${classroom.endDate}</td>
     <td>${classroom.room}</td>
 </tr>
-<%}%>
+</c:forEach>
 </table>
 </body>
 </html>

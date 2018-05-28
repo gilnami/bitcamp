@@ -4,6 +4,7 @@
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,13 +37,9 @@
     <td>
         <select name='memberId'>
             <option value=''>--선택 안함--</option>
-<% 
-List<Member> members = (List<Member>) request.getAttribute("members");
-for (Member member : members) {
-    pageContext.setAttribute("member", member);
-%>
+<c:forEach items="${members}" var="member">
             <option ${member.id == task.worker.id ? "selected" : "" }>${member.id}</option>
-<%} %>
+</c:forEach>
         </select>
     </td>
 </tr>
