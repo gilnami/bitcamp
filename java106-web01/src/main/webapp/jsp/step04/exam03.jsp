@@ -20,8 +20,12 @@ pageContext.setAttribute("tel", "1111");
 request.setAttribute("tel", "2222");
 session.setAttribute("tel", "3333");
 application.setAttribute("tel", "4444");
+
+String fax = "1010";
 %>
 tel: ${tel} <br>
 
+로컬 변수는 EL 표기법을 사용하여 가져올 수 없다.<br>
+fax = ${fax}<br>
 </body>
 </html>
