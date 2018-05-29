@@ -4,15 +4,43 @@ package bitcamp.java106.pms.servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
+
 @SuppressWarnings("serial")
-@WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet {
+    
+    ApplicationContext iocContainer;
+    @Override
+    public void init() throws ServletException {
+        String configClassName = this.getServletConfig().getInitParameter("contextConfigLocation");
+        
+        try {
+            // 서블릿 컨테이너가 시작되면 스프링 IoC 컨테이너를 준비한다. 
+            iocContainer = 
+                    new AnnotationConfigApplicationContext(
+                            Class.forName(configClassName));
+            
+            // 서블릿에서 스프링 IoC 컨테이너를 꺼내 쓸 수 있도록,
+            // WebApplicationContextUtils에 보관한다.
+            WebApplicationContextUtils.containers.put(
+                    this.getServletContext(), iocContainer);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     @Override
     protected void service(
             HttpServletRequest request, 

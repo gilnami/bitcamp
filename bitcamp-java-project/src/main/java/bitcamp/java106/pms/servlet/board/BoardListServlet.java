@@ -45,7 +45,7 @@ public class BoardListServlet extends HttpServlet {
             request.setAttribute("viewUrl", "/board/list.jsp");
             
         } catch (Exception e) {
-            throw new ServletException(e);
+            throw new ServletException(e); 
         }
     }
 }
