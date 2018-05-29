@@ -46,7 +46,7 @@ public class TeamUpdateServlet extends HttpServlet {
             if (count == 0) {
                 throw new Exception("<p>해당 팀이 존재하지 않습니다.</p>");
             }
-            response.sendRedirect("list");
+            request.setAttribute("viewUrl", "redirect:list.do");
             
         } catch (Exception e) {
             request.setAttribute("error", e);

@@ -42,7 +42,7 @@ public class ClassroomAddServlet extends HttpServlet {
             classroom.setRoom(request.getParameter("room"));
             
             classroomDao.insert(classroom);
-            response.sendRedirect("list");
+            request.setAttribute("viewUrl", "redirect:list.do");
             
         } catch (Exception e) {
             request.setAttribute("error", e);

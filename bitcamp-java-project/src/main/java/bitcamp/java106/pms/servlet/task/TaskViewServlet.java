@@ -54,9 +54,7 @@ public class TaskViewServlet extends HttpServlet {
             
             request.setAttribute("task", task);
             request.setAttribute("members", members);
-            
-            response.setContentType("text/html;charset=UTF-8");
-            request.getRequestDispatcher("/task/view.jsp").forward(request, response);
+            request.setAttribute("viewUrl", "/task/view.jsp");
 
         } catch (Exception e) {
             request.setAttribute("error", e);

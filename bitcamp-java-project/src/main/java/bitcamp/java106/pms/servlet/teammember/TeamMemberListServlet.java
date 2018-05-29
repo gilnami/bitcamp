@@ -39,7 +39,7 @@ public class TeamMemberListServlet extends HttpServlet {
         try {
             List<Member> members = teamMemberDao.selectListWithEmail(name);
             request.setAttribute("members", members);
-            request.getRequestDispatcher("/team/member/list.jsp").include(request, response);
+            request.setAttribute("viewUrl", "/team/member/list.jsp");
         } catch (Exception e) {
             request.setAttribute("error", e);
             request.setAttribute("title", "팀 멤버 조회 실패!");

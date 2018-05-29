@@ -41,8 +41,7 @@ public class ClassroomViewServlet extends HttpServlet {
                 throw new Exception("유효하지 않은 강의입니다.");
             }
             request.setAttribute("classroom", classroom);
-            response.setContentType("text/html;charset=UTF-8");
-            request.getRequestDispatcher("/classroom/view.jsp").forward(request, response);
+            request.setAttribute("viewUrl", "/classroom/view.jsp");
             
         } catch (Exception e) {
             request.setAttribute("error", e);

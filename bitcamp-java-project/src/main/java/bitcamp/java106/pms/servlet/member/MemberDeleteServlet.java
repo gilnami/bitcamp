@@ -39,7 +39,7 @@ public class MemberDeleteServlet extends HttpServlet {
             if (count == 0) {
                 throw new Exception("해당 회원이 없습니다.");
             }
-            response.sendRedirect("list");
+            request.setAttribute("viewUrl", "redirect:list.do");
             
         } catch (Exception e) {
             request.setAttribute("error", e);

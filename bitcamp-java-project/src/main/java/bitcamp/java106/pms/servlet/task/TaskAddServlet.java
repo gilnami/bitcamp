@@ -66,7 +66,7 @@ public class TaskAddServlet extends HttpServlet {
             }
             List<Member> members = teamMemberDao.selectListWithEmail(teamName);
             
-            out.println("<form action='add' method='post'>");
+            out.println("<form action='add.do' method='post'>");
             out.printf("<input type='hidden' name='teamName' value='%s'>\n", teamName);
             out.println("<table border='1'>");
             out.println("<tr>");
@@ -130,8 +130,7 @@ public class TaskAddServlet extends HttpServlet {
             }
             
             taskDao.insert(task);
-            response.sendRedirect("list?teamName=" + 
-                    URLEncoder.encode(teamName, "UTF-8"));
+            request.setAttribute("viewUrl", "redirect:list.do" + URLEncoder.encode(teamName, "UTF-8"));
             // 응답 헤더의 값으로 한글을 포함할 때는 
             // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
             // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.

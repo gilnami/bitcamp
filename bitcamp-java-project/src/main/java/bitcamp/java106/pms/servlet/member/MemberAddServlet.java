@@ -40,7 +40,7 @@ public class MemberAddServlet extends HttpServlet {
             member.setPassword(request.getParameter("password"));
             
             memberDao.insert(member);
-            response.sendRedirect("list");
+            request.setAttribute("viewUrl", "redirect:list.do");
             
         } catch (Exception e) {
             request.setAttribute("error", e);
