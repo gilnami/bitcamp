@@ -1,6 +1,5 @@
 package bitcamp.java106.pms.controller.board;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,15 +23,17 @@ public class BoardAddController implements PageController {
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
         
-            Board board = new Board();
-            board.setTitle(request.getParameter("title"));
-            board.setContent(request.getParameter("content"));
+        Board board = new Board();
+        board.setTitle(request.getParameter("title"));
+        board.setContent(request.getParameter("content"));
 
-            boardDao.insert(board);
-            return "redirect:list.do";
+        boardDao.insert(board);
+        return "redirect:list.do";
     }
+
 }
 
+//ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - 필터 적용

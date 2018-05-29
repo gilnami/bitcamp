@@ -23,17 +23,17 @@ public class BoardViewController implements PageController {
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
         
-            int no = Integer.parseInt(request.getParameter("no"));
-            Board board = boardDao.selectOne(no);
-            if (board == null) {
-                throw new Exception("유효하지 않은 게시물 번호입니다.");
-            }
-            request.setAttribute("board", board);
-            return "/board/view.jsp";
-            
+        int no = Integer.parseInt(request.getParameter("no"));
+        Board board = boardDao.selectOne(no);
+        if (board == null) {
+            throw new Exception("유효하지 않은 게시물 번호입니다.");
+        }
+        request.setAttribute("board", board);
+        return "/board/view.jsp";
     }
 }
 
+//ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 39 - forward 적용

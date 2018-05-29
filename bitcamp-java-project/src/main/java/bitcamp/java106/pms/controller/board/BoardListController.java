@@ -12,7 +12,7 @@ import bitcamp.java106.pms.dao.BoardDao;
 import bitcamp.java106.pms.domain.Board;
 
 @Component("/board/list")
-public class BoardListController implements PageController{
+public class BoardListController implements PageController {
     
     BoardDao boardDao;
     
@@ -23,18 +23,15 @@ public class BoardListController implements PageController{
     @Override
     public String service(
             HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-        
-            // JSP에서 출력할 게시물 목록을 가져온다.
-            List<Board> list = boardDao.selectList();
+            HttpServletResponse response) throws Exception {        
             
-            // JSP가 게시물 목록을 사용할 수 있도록 ServletRequest 보관소에 저장한다.
-            request.setAttribute("list", list);
-            
-            return "/board/list.jsp";
+        List<Board> list = boardDao.selectList();
+        request.setAttribute("list", list);
+        return "/board/list.jsp";
     }
 }
 
+//ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 39 - forward 적용

@@ -12,19 +12,18 @@
     
     <!-- Mybatis SqlSessionFactory 준비하기 -->
     <bean id="mybatisConfigInputStream"
-          class="import org.apache.ibatis.io.Resources"
+          class="org.apache.ibatis.io.Resources"
           factory-method="getResourceAsStream">
-          
-          <constructor-arg value="bitcamp/java106/pms/sql/mybatis-config.xml"/>
+      <constructor-arg value="bitcamp/java106/pms/sql/mybatis-config.xml"/>
     </bean>
     
     <bean id="sqlSessionFactoryBuilder"
           class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
-
+          
     <bean id="sqlSessionFactory"
           factory-bean="sqlSessionFactoryBuilder"
           factory-method="build">
-          <constructor-arg ref="mybatisConfigInputStream"/>
+      <constructor-arg ref="mybatisConfigInputStream"/>
     </bean>
 </beans>
 

@@ -6,5 +6,5 @@ import javax.servlet.http.HttpServletResponse;
 public interface PageController {
     String service(
             HttpServletRequest request, 
-            HttpServletResponse responst) throws Exception;
+            HttpServletResponse response) throws Exception;
 }

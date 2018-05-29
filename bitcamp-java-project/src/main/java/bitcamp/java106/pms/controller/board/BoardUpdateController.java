@@ -17,27 +17,28 @@ public class BoardUpdateController implements PageController {
     public BoardUpdateController(BoardDao boardDao) {
         this.boardDao = boardDao;
     }
+    
     @Override
     public String service(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
         
-            Board board = new Board();
-            board.setNo(Integer.parseInt(request.getParameter("no")));
-            board.setTitle(request.getParameter("title"));
-            board.setContent(request.getParameter("content"));
-            
-            int count = boardDao.update(board);
-            if (count == 0) {
-                throw new Exception("해당 게시물이 존재하지 않습니다.");
-            } 
-            
-            return "redirect:list.do";
-            
+        Board board = new Board();
+        board.setNo(Integer.parseInt(request.getParameter("no")));
+        board.setTitle(request.getParameter("title"));
+        board.setContent(request.getParameter("content"));
+        
+        int count = boardDao.update(board);
+        if (count == 0) {
+            throw new Exception("해당 게시물이 존재하지 않습니다.");
+        } 
+        
+        return "redirect:list.do";
     }
     
 }
 
+//ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - 필터 적용
