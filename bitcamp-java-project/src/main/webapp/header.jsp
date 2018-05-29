@@ -1,4 +1,3 @@
-<%@ page import="bitcamp.java106.pms.domain.Member"%>
 <%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,7 +8,7 @@
         <a href='${pageContext.request.contextPath}/auth/form.jsp'>로그인</a>
     </c:when>
     <c:otherwise>
-        ${loginUser.id} <a href='${pageContext.request.contextPath}/auth/logout'>로그아웃</a>
+        ${loginUser.id} <a href='${pageContext.request.contextPath}/auth/logout.do'>로그아웃</a>
     </c:otherwise>
 </c:choose>
 </div>

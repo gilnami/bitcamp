@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="/header.jsp"/>
-<h1><a href='../team/view.do?name=${param.teamName}'>${param.teamName}</a>
+<h1><a href='../team/view?name=${param.teamName}'>${param.teamName}</a>
 의 작업 목록(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 <p><a href='add.do?teamName=${param.teamName}'>새작업</a></p>
 <table border='1'>

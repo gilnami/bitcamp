@@ -57,16 +57,19 @@ public class TeamMemberAddServlet extends HttpServlet {
                 throw new Exception("이미 등록된 회원입니다.");
             }
             teamMemberDao.insert(teamName, memberId);
-            request.setAttribute("viewUrl", "redirect:view.do");            
+            request.setAttribute("viewUrl", "redirect:../view.do?name=" + 
+                    URLEncoder.encode(teamName, "UTF-8"));
+            // 개발자가 요청이나 응답헤더를 직접 작성하여 값을 주고 받으로 한다면,
+            // URL 인코딩과 URL 디코딩을 손수 해 줘야 한다.
+            
         } catch (Exception e) {
-            request.setAttribute("error", e);
-            request.setAttribute("title", "팀 회원 등록 실패!");
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            throw new ServletException(e);
         }
     }
     
 }
 
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - CharacterEncodingFilter 필터 적용.
 //         request.setCharacterEncoding("UTF-8") 제거

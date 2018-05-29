@@ -44,21 +44,22 @@ public class TaskDeleteServlet extends HttpServlet {
             if (count == 0) {
                 throw new Exception("해당 작업이 존재하지 않습니다.");
             }
-            request.setAttribute("viewUrl", "redirect:list.do" + URLEncoder.encode(teamName, "UTF-8"));
+            request.setAttribute("viewUrl", 
+                    "redirect:list.do?teamName=" + 
+                   URLEncoder.encode(teamName, "UTF-8"));
             // 응답 헤더의 값으로 한글을 포함할 때는 
             // 서블릿 컨테이너가 자동으로 URL 인코딩 하지 않는다.
             // 위와 같이 개발자가 직접 URL 인코딩 해야 한다.
             
             
         } catch (Exception e) {
-            request.setAttribute("error", e);
-            request.setAttribute("title", "작업 삭제 실패!");
-            request.getRequestDispatcher("/error.jsp").forward(request, response);
+            throw new ServletException(e);
         }
     }
     
 }
 
+//ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - CharacterEncodingFilter 필터 적용.
 //         request.setCharacterEncoding("UTF-8") 제거
