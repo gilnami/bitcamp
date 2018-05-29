@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>'${param.teamName}' 팀의 작업 등록</h1>
-<form action='add.do' method='post'>
+<form action='add_post.do' method='post'>
 <input type='hidden' name='teamName' value='${param.teamName}'>
 <table border='1'>
 <tr>
