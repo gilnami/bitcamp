@@ -1,24 +1,16 @@
 // 로그인 폼 출력과 사용자 인증처리 서블릿
 package bitcamp.java106.pms.controller.auth;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import bitcamp.java106.pms.controller.PageController;
 import bitcamp.java106.pms.dao.MemberDao;
-import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @Component("/auth/login")
 public class LoginController implements PageController{
