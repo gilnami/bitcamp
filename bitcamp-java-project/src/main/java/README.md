@@ -1,7 +1,5 @@
 # 변경 내역
-- DispatcherServlet 추가
-- web.xml 변경
-- 모든 서블릿 클래스 변경
-- JSP 페이지의 모든 링크에 *.do 붙이기
+- DispatcherServlet 변경
+- BoardXxxController 처럼 CRUD 컨트롤러들을 한 개의 클래스로 묶는다. 
  
 
