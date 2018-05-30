@@ -2,6 +2,7 @@ package bitcamp.java106.pms.web;
 
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,11 +33,8 @@ public class TeamMemberController {
     
     @RequestMapping("/add")
     public String add(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-        
-        String teamName = request.getParameter("teamName");
-        String memberId = request.getParameter("memberId");
+            @RequestParam("teamName") String teamName,
+            @RequestParam("memberId") String memberId) throws Exception {
         
         Team team = teamDao.selectOne(teamName);
         if (team == null) {
@@ -56,12 +54,9 @@ public class TeamMemberController {
     
     @RequestMapping("/delete")
     public String delete(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+            @RequestParam("teamName") String teamName,
+            @RequestParam("memberId") String memberId) throws Exception {
          
-        String teamName = request.getParameter("teamName");
-        String memberId = request.getParameter("memberId");
-        
         int count = teamMemberDao.delete(teamName, memberId);
         if (count == 0) {
             throw new Exception("<p>해당 팀원이 존재하지 않습니다.</p>");
@@ -74,13 +69,11 @@ public class TeamMemberController {
     
     @RequestMapping("/list")
     public String list(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-       
-        String name = request.getParameter("name");
+            @RequestParam("teamName") String teamName,
+            Map<String,Object> map) throws Exception {
 
-        List<Member> members = teamMemberDao.selectListWithEmail(name);
-        request.setAttribute("members", members);
+        List<Member> members = teamMemberDao.selectListWithEmail();
+        map.put("members", members);
         return "/team/member/list.jsp";
     }
 }

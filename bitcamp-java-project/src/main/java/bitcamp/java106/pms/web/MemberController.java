@@ -1,6 +1,7 @@
 package bitcamp.java106.pms.web;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,25 +23,16 @@ public class MemberController {
     
     @RequestMapping("/add")
     public String add(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+            Member member) throws Exception {
           
-        Member member = new Member();
-        member.setId(request.getParameter("id"));
-        member.setEmail(request.getParameter("email"));
-        member.setPassword(request.getParameter("password"));
-        
         memberDao.insert(member);
         return "redirect:list.do";
     }
     
     @RequestMapping("/delete")
     public String delete(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+            @RequestParam("id") String id) throws Exception {
         
-        String id = request.getParameter("id");
-
         int count = memberDao.delete(id);
         if (count == 0) {
             throw new Exception("해당 회원이 없습니다.");
@@ -50,23 +42,16 @@ public class MemberController {
     
     @RequestMapping("/list")
     public String list(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+            Map<String,Object> map) throws Exception {
         
         List<Member> list = memberDao.selectList();
-        request.setAttribute("list", list);
+        map.put("list", list);
         return "/member/list.jsp";
     }
     
     @RequestMapping("/update")
     public String update(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-        
-        Member member = new Member();
-        member.setId(request.getParameter("id"));
-        member.setEmail(request.getParameter("email"));
-        member.setPassword(request.getParameter("password"));
+            Member member) throws Exception {
         
         int count = memberDao.update(member);
         if (count == 0) {
@@ -77,16 +62,14 @@ public class MemberController {
     
     @RequestMapping("/view")
     public String view(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-
-        String id = request.getParameter("id");
+            @RequestParam("id") String id,
+            Map<String,Object> map) throws Exception {
         
         Member member = memberDao.selectOne(id);
         if (member == null) {
             throw new Exception("유효하지 않은 멤버 아이디입니다.");
         }
-        request.setAttribute("member", member);
+        map.put("member", member);
         return "/member/view.jsp";
     }
 }
