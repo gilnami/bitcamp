@@ -2,6 +2,7 @@
 package bitcamp.java106.pms.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
@@ -143,16 +144,30 @@ public class DispatcherServlet extends HttpServlet {
     private Object getValueObject(Parameter p, HttpServletRequest request) {
         Class<?> clazz = p.getType();
         
-        Method[] methods = clazz.getMethods();
-        
-        for (Method m : methods) {
-            if (!m.getName().startsWith("set")) continue;
+        try {
+            Constructor<?> defaultConstructor = clazz.getConstructor(null);
+            Object valueObject = defaultConstructor.newInstance(null);
             
-            String propName = getPropertyName(m.getName());
-            String propValue = request.getParameter(propName);
-            System.out.printf("===> %s = %s\n", propName, propValue);
+            Method[] methods = clazz.getMethods();
+            
+            for (Method m : methods) {
+                if (!m.getName().startsWith("set")) continue;
+                
+                String propName = getPropertyName(m.getName());
+                String propValue = request.getParameter(propName);
+                
+                // 클라이언트가 그 프로퍼티 이름으로 보낸 값이 없으면 건너 뛴다.
+                if(propValue == null) continue;
+                
+                // 셋터에서 요구하는 파리미터 값의 타입이 String이나 primitive 타입이 아니면 건너뛴다
+                if (!isPrimitiveType(m.getParameterTypes()[0])) continue;
+                
+                
+            }
+            return valueObject;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
     
     private String getPropertyName(String methodName) {
@@ -190,6 +205,8 @@ public class DispatcherServlet extends HttpServlet {
         return value;
     }
     
+    
+    
     private boolean isPrimitiveType(Class<?> type) {
         if (type == byte.class ||
             type == short.class ||
@@ -198,7 +215,8 @@ public class DispatcherServlet extends HttpServlet {
             type == float.class ||
             type == double.class ||
             type == char.class ||
-            type == boolean.class)
+            type == boolean.class) ||
+            type == string.class)
             return true;
         return false;
     }
