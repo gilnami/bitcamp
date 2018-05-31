@@ -4,9 +4,6 @@ import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Component;
 
 import bitcamp.java106.pms.dao.MemberDao;
@@ -14,7 +11,6 @@ import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.web.RequestMapping;
 
 @Component("/team/member")
 public class TeamMemberController {
@@ -69,10 +65,10 @@ public class TeamMemberController {
     
     @RequestMapping("/list")
     public String list(
-            @RequestParam("teamName") String teamName,
+            @RequestParam("name") String name,
             Map<String,Object> map) throws Exception {
 
-        List<Member> members = teamMemberDao.selectListWithEmail();
+        List<Member> members = teamMemberDao.selectListWithEmail(name);
         map.put("members", members);
         return "/team/member/list.jsp";
     }
