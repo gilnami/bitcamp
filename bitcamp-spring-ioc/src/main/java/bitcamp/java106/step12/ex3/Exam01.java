@@ -21,7 +21,7 @@ public class Exam01 {
         // 4) 프로젝트 갱신
         
         ApplicationContext iocContainer = new ClassPathXmlApplicationContext(
-                "bitcamp/java106/step12/ex2/application-context.xml");
+                "bitcamp/java106/step12/ex3/application-context.xml");
         
         BeanUtils.printBeanNames(iocContainer);
         
@@ -29,8 +29,8 @@ public class Exam01 {
         
         //1) 게시물 입력
         Board board = new Board();
-        board.setTitle("Title");
-        board.setContent("Content");
+        board.setTitle("Ex3");
+        board.setContent("ex3");
         boardDao.insert(board);
         
         //2) 게시물 목록 조회
