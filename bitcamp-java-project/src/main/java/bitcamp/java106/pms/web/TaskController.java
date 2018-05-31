@@ -1,12 +1,9 @@
 package bitcamp.java106.pms.web;
 
 import java.net.URLEncoder;
-import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 
@@ -16,7 +13,6 @@ import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Task;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.web.RequestMapping;
 
 @Component("/task")
 public class TaskController {
@@ -43,9 +39,12 @@ public class TaskController {
             throw new Exception(task.getTeam().getName() + " 팀은 존재하지 않습니다.");
         }
         
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("teamName", task.getTeam().getName());
+        params.put("memberId", task.getWorker().getId());
         if (task.getWorker().getId().length() > 0 &&
             !teamMemberDao.isExist(
-                task.getTeam().getName(), task.getWorker().getId())) {
+                params)) {
             throw new Exception(task.getWorker().getId() + "는 이 팀의 회원이 아닙니다.");
         }
         

@@ -1,6 +1,7 @@
 package bitcamp.java106.pms.web;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,10 +41,13 @@ public class TeamMemberController {
         if (member == null) {
             throw new Exception(memberId + " 회원은 없습니다.");
         }
-        if (teamMemberDao.isExist(teamName, memberId)) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("teamName", teamName);
+        params.put("memberId", memberId);
+        if (teamMemberDao.isExist(params)) {
             throw new Exception("이미 등록된 회원입니다.");
         }
-        teamMemberDao.insert(teamName, memberId);
+        teamMemberDao.insert(params);
         return "redirect:../view.do?name=" + 
                 URLEncoder.encode(teamName, "UTF-8");
     }
@@ -52,8 +56,11 @@ public class TeamMemberController {
     public String delete(
             @RequestParam("teamName") String teamName,
             @RequestParam("memberId") String memberId) throws Exception {
-         
-        int count = teamMemberDao.delete(teamName, memberId);
+        
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("teamName", teamName);
+        params.put("memberId", memberId);
+        int count = teamMemberDao.delete(params);
         if (count == 0) {
             throw new Exception("<p>해당 팀원이 존재하지 않습니다.</p>");
         }
