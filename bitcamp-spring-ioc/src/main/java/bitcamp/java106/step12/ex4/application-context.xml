@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <context:component-scan base-package="bitcamp.java106.step12.ex3"></context:component-scan>
+    <context:component-scan base-package="bitcamp.java106.step12.ex4"></context:component-scan>
     
     <!-- Mybatis SqlSessionFactory 준비하기 -->
     <bean id="sqlSessionFactory"
@@ -23,7 +23,7 @@
              SqlSessionFactory에서 그 경로에서 SQL 맵퍼 파일을 찾을 것이다.
              
          -->
-        <property name="mapperLocations" value="classpath*:bitcamp/java106/step12/ex3/*Mapper.xml"/>
+        <property name="mapperLocations" value="classpath*:bitcamp/java106/step12/ex4/*Mapper.xml"/>
         
         <!-- Board 클래스처럼 데이터를 담는 객체(Value object = Domain Object)의 
              별명을 자동으로 등록하기
@@ -48,6 +48,16 @@
     <!-- 스프링 설정 파일에서 사용할 .properties 파일 로딩하는 객체 준비 -->
     <context:property-placeholder 
         location="bitcamp/java106/step12/jdbc.properties"/>
+        
+    <!-- DAO를 자동으로 구현해주는 객체를 준비 
+        => 개발자는 DAO를 직접 구현할 필요가 없다.
+        => 단지 인터페이스만 선언하면 된다.
+    -->
+    
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      <!-- DAO 인터페이스가 선언된 패키지를 지정한다. -->
+	  <property name="basePackage" value="bitcamp.java106.step12.ex4" />
+	</bean>
 </beans>
 
 
