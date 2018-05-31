@@ -32,7 +32,11 @@ public class TaskController {
     @RequestMapping("/add")
     public String add(
             Task task,
-            @RequestParam("teamName") String teamName) throws Exception {
+            @RequestParam("teamName") String teamName,
+            @RequestParam("memberId") String memberId) throws Exception {
+        
+        task.setTeam(new Team().setName(teamName));
+        task.setWorker(new Member().setId(memberId));
         
         Team team = teamDao.selectOne(task.getTeam().getName());
         if (team == null) {
@@ -101,8 +105,12 @@ public class TaskController {
     @RequestMapping("/update")
     public String update(
             @RequestParam("teamName") String teamName,
+            @RequestParam("memberId") String memberId,
             Task task) throws Exception {
         
+        task.setTeam(new Team().setName(teamName));
+        task.setWorker(new Member().setId(memberId));
+            
         int count = taskDao.update(task);
         if (count == 0) {
             throw new Exception("<p>해당 작업이 없습니다.</p>");

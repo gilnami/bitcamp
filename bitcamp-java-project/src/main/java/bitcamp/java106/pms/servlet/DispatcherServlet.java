@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import bitcamp.java106.pms.support.WebApplicationContextUtils;
 import bitcamp.java106.pms.web.RequestMapping;
 import bitcamp.java106.pms.web.RequestParam;
 
@@ -35,11 +34,6 @@ public class DispatcherServlet extends HttpServlet {
         try {
             iocContainer = new ClassPathXmlApplicationContext(
                 this.getServletConfig().getInitParameter("contextConfigLocation"));
-            
-            // 다른 서블릿에서 스프링 IoC 컨테이너를 꺼내 쓸 수 있도록,
-            // WebApplicationContextUtils에 보관한다.
-            WebApplicationContextUtils.containers.put(
-                    this.getServletContext(), iocContainer);
             
             String[] beanNames = iocContainer.getBeanDefinitionNames();
             System.out.println("-----------------------------");
@@ -110,7 +104,7 @@ public class DispatcherServlet extends HttpServlet {
                 request.getRequestDispatcher(viewUrl).include(request, response);
             }
         } catch (Exception e) {
-            throw new ServletException("페이지 컨트롤러 실행 중 오류 발생!");
+            throw new ServletException("페이지 컨트롤러 실행 중 오류 발생!", e);
         }
     }
 

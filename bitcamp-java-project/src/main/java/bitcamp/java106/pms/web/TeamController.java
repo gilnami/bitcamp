@@ -1,5 +1,6 @@
 package bitcamp.java106.pms.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,8 @@ public class TeamController {
     public String delete(
             @RequestParam("name") String name) throws Exception {
         
-        teamMemberDao.delete(name);
+        HashMap<String,Object> params = new HashMap<>();
+        teamMemberDao.delete(params);
         taskDao.deleteByTeam(name);
         int count = teamDao.delete(name);
         if (count == 0) {
