@@ -12,7 +12,7 @@
     <result column="rdt" property="registeredDate"/>
   </resultMap>
   
-  <select id="selectBoard" resultMap="BoardMap">
+  <select id="selectList" resultMap="BoardMap">
     select 
       bno, 
       titl, 
@@ -20,6 +20,10 @@
       rdt 
     from ex_board
   </select>
+  <insert id="insert" parameterType="Board">
+    insert into ex_board(titl,cont,rdt) 
+    values(#{title},#{content},now())
+  </insert>  
 </mapper>
 
 
