@@ -38,8 +38,9 @@ repositories {
 // => 다운로드할 의존 라이브러리를 지정한다.
 dependencies {
     // Spring IoC 컨테이너 라이브러리
-    compile group: 'org.springframework', name: 'spring-context', version: '5.0.6.RELEASE'
+    // compile group: 'org.springframework', name: 'spring-context', version: '5.0.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.6.RELEASE'
     
     // MySQL JDBC Driver 라이브러리
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'

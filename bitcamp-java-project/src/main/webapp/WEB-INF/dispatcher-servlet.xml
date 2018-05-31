@@ -47,7 +47,7 @@
     
     <!-- 스프링 설정 파일에서 사용할 .properties 파일 로딩하는 객체 준비 -->
     <context:property-placeholder 
-        location="bitcamp/java106/pms/sql/jdbc.properties"/>
+        location="classpath:bitcamp/java106/pms/sql/jdbc.properties"/>
         
     <!-- DAO를 자동으로 구현해주는 객체를 준비 
         => 개발자는 DAO를 직접 구현할 필요가 없다.

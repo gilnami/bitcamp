@@ -1,19 +1,17 @@
 package bitcamp.java106.pms.web;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
-import bitcamp.java106.pms.web.RequestMapping;
 
-@Component("/classroom")
+@Controller
+@RequestMapping("/classroom")
 public class ClassroomController {
     
     ClassroomDao classroomDao;
