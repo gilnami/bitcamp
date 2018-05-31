@@ -27,9 +27,9 @@
     values(#{title},#{content},now())
   </insert>
   <delete id="delete" parameterType="int">
-    delete from ex_board
+    delete from ex_board 
     where bno=#{value}
-  </delete> 
+  </delete>
 </mapper>
 
 
