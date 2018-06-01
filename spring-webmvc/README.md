@@ -1,5 +1,17 @@
 # 버전 별 주제
 
+## src03 - ContextLoaderListener 사용
+- 프론트 컨트롤러들이 공유하는 객체는 ContextLoaderListener애서 관리한다.
+- 작업
+  - web.xml에 ContextLoaderListener등록
+  - /WEB-INF/app-context.xml생성
+## src02 - 멀티 프론트 컨트롤러 설정
+- URL에 따라 여러 개의 프론트 컨트롤러를 설정
+- 작업내용
+- web.xml 변경
+- - /WEB-INF/json-servlet.xml 생성
+- 
+
 ## src01 - 프론트 컨트롤러 설정
 - XML 기반으로 프론트 컨트롤러 설정하기
 - 작업내용
@@ -13,3 +25,5 @@
    그래서 IoC 컨테이너의 설정파일이 필요하다.
   - DispatcherServlet은 다음 규칙에 따라 만든 IoC 컨테이너의 설정파일을 자동으로 찾는다.
         /WEB-INF/[서블릿 별명]-servlet.xml
+  - /index.html 생성
+  - HelloController 생성
