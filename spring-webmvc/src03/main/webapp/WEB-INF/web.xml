@@ -28,20 +28,13 @@
 <!-- ContextLoaderListener의 IoC 컨트롤러를 위한 설정 파일 지정 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/app-context.xml</param-value>
+        <param-value>/WEB-INF/app-context.xml</param-value>
     </context-param>
 
 
     <servlet>
         <servlet-name>mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!-- 기본경로가 아니면 다음과 같이 설정 파일에 위치를 지정해야 한다. -->
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring/mvc-servlet.xml</param-value>
-            <!-- 만약 CLASSPATH에 설정파일이 있다면 경로 앞에 classpath: 접두어를 붙인다. -->
-            <!-- <param-value>classpath:bitcamp/mvc/config/mvc-context.xml</param-value> -->
-        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -49,6 +42,22 @@
         <url-pattern>/mvc/*</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>json</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>json</servlet-name>
+        <url-pattern>/json/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 서블릿 실행 도중 특정 예외가 발생하면 실행될 JSP를 지정한다. -->
+    <!-- 클라이언트가 요청한 자원을 찾을 수 없을 때 
+         서블릿 컨테이너는 URL로 지정된 폴더를 찾는다. 
+         그리고 다음에 나열된 파일을 순서대로 찾는다.
+         있다면 그 파일을 클라이언트에게 보낸다. -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.xhtml</welcome-file>
