@@ -12,5 +12,4 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer{
         // 웹 애플리케이션을 시작할 때 이 메서드를 호출한다. 누가?
         System.out.println("====> MyWebApplicationInitializer.onStartup()");
     }
-
 }
