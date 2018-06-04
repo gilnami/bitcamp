@@ -1,10 +1,13 @@
 package bitcamp.java106.pms.web;
 
+import java.beans.PropertyEditorSupport;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -83,6 +86,18 @@ public class TeamController {
         }
         map.put("team", team);
         return "/team/view.jsp";
+    }
+    
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(
+                java.sql.Date.class, 
+                new PropertyEditorSupport() {
+                    @Override
+                    public void setAsText(String text) throws IllegalArgumentException {
+                        this.setValue(java.sql.Date.valueOf(text));
+                    }
+                });
     }
 }
 
