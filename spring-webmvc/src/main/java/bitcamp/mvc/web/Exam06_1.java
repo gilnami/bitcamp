@@ -28,6 +28,12 @@ public class Exam06_1 {
         // Content-Type을 설정하고 싶다면,
         // @RequestMapping,@GetMapping,@PostMapping 애노테이션에서
         // produces 속성에 콘텐트 타입을 지정하라
+        // 원래 produces는 클라이언트의 HTTP 요청 헤더인 Accept 값과 일치하는 지 비교할 때
+        // 사용하는 속성이지만,
+        // 이렇게 콘텐트를 직접 출력할 때에
+        // 프론트 컨트롤러는 produces에 설정된 정보를 참고하여
+        // Content-Type을 설정한다.
+        //
         return "Exam06_1.m2() ==> 012ABCabc#@!가각간";
     }
 }
