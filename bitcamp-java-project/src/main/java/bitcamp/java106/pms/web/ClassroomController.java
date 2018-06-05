@@ -1,12 +1,9 @@
 package bitcamp.java106.pms.web;
 
-import java.beans.PropertyEditorSupport;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,6 +18,13 @@ public class ClassroomController {
     
     public ClassroomController(ClassroomDao classroomDao) {
         this.classroomDao = classroomDao;
+    }
+    
+    @RequestMapping("/form")
+    public void form(/*Model model*/) {
+        // 입력폼에서 사용할 데이터가 있다면
+        // 이 request handler에서 준비하면 된다.
+        // model.addAttribute("프로퍼티명","값");
     }
     
     @RequestMapping("/add")
@@ -43,12 +47,11 @@ public class ClassroomController {
     }
     
     @RequestMapping("/list")
-    public String list(
+    public void list(
             Map<String,Object> map) throws Exception {
      
         List<Classroom> list = classroomDao.selectList();
         map.put("list", list);
-        return "/classroom/list.jsp";
     }
     
     @RequestMapping("/update")
@@ -63,7 +66,7 @@ public class ClassroomController {
     }
     
     @RequestMapping("/view")
-    public String view(
+    public void view(
             @RequestParam("no") int no,
             Map<String,Object> map) throws Exception {
      
@@ -73,7 +76,6 @@ public class ClassroomController {
             throw new Exception("유효하지 않은 강의입니다.");
         }
         map.put("classroom", classroom);
-        return "/classroom/view.jsp";
     }
     
     // GlobalBindingInitializer에 등록했기 때문에 이 클래스에서는 제외

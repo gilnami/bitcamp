@@ -33,6 +33,17 @@ public class TeamController {
         this.taskDao = taskDao;
     }
     
+    @RequestMapping("/form")
+    public void form(/*Model model*/) {
+        // 입력폼에서 사용할 데이터가 있다면
+        // 이 request handler에서 준비하면 된다.
+        // model.addAttribute("프로퍼티명","값");
+        
+        // 리턴할 view URL
+        // = prefix + request handler URL + suffix
+        // - "/WEB-INF/jsp/" + "board/form.do" + ".jsp"
+    }
+    
     @RequestMapping("/add")
     public String add(
             Team team) throws Exception {
@@ -56,12 +67,11 @@ public class TeamController {
     }
     
     @RequestMapping("/list")
-    public String list(
+    public void list(
             Map<String,Object> map) throws Exception {
         
         List<Team> list = teamDao.selectList();
         map.put("list", list);
-        return "/team/list.jsp";
     }
     
     @RequestMapping("/update")
@@ -76,7 +86,7 @@ public class TeamController {
     }
     
     @RequestMapping("/view")
-    public String view(
+    public void view(
             @RequestParam("name") String name,
             Map<String,Object> map) throws Exception {
         
@@ -85,7 +95,6 @@ public class TeamController {
             throw new Exception("유효하지 않은 팀입니다.");
         }
         map.put("team", team);
-        return "/team/view.jsp";
     }
     
 /*    @InitBinder

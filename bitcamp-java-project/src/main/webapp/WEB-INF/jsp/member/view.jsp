@@ -8,7 +8,7 @@
 <title>멤버 보기</title>
 </head>
 <body>
-<jsp:include page="/header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <h1>멤버 보기(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 
 <form action='update.do' method='post'>

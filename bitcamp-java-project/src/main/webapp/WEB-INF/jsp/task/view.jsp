@@ -9,7 +9,7 @@
 <title>작업 보기</title>
 </head>
 <body>
-<jsp:include page="/header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <h1>작업 보기(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 <form action='update.do' method='post'>
 <input type='hidden' name='no' value='${param.no}'>

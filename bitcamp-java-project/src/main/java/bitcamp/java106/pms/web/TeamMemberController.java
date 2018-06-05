@@ -30,6 +30,11 @@ public class TeamMemberController {
         this.memberDao = memberDao;
         this.teamMemberDao = teamMemberDao;
     }
+
+    @RequestMapping("/form")
+    public void form(/*Model model*/) {
+        // model.addAttribute("프로퍼티명","값");
+    }
     
     @RequestMapping("/add")
     public String add(
@@ -79,13 +84,12 @@ public class TeamMemberController {
     }
     
     @RequestMapping("/list")
-    public String list(
+    public void list(
             @RequestParam("name") String name,
             Map<String,Object> map) throws Exception {
 
         List<Member> members = teamMemberDao.selectListWithEmail(name);
         map.put("members", members);
-        return "/team/member/list.jsp";
     }
 }
 

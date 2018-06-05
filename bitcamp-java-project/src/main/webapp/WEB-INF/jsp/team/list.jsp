@@ -9,7 +9,7 @@
 <title>팀 목록</title>
 </head>
 <body>
-<jsp:include page="/header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <h1>팀 목록(MVC + JSP 전용 태그 + EL + JSTL)</h1>
 <p><a href='form.html'>새 팀</a></p>
 <table border='1'>
