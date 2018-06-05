@@ -145,7 +145,7 @@ public class TaskController {
         return "/task/view.jsp";
     }
     
-    @InitBinder
+/*    @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(
                 java.sql.Date.class, 
@@ -155,7 +155,7 @@ public class TaskController {
                         this.setValue(java.sql.Date.valueOf(text));
                     }
                 });
-    }
+    }*/
 }
 
 //ver 48 - CRUD 기능을 한 클래스에 합치기

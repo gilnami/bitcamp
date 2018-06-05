@@ -76,7 +76,8 @@ public class ClassroomController {
         return "/classroom/view.jsp";
     }
     
-    @InitBinder
+    // GlobalBindingInitializer에 등록했기 때문에 이 클래스에서는 제외
+/*    @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(
                 java.sql.Date.class, 
@@ -86,7 +87,7 @@ public class ClassroomController {
                         this.setValue(java.sql.Date.valueOf(text));
                     }
                 });
-    }
+    }*/
 }
 
 //ver 48 - CRUD 기능을 한 클래스에 합치기

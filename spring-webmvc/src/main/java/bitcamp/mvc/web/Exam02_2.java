@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bitcamp.mvc.dao.BoardDao;
 
-@Controller
-@RequestMapping("/exam02_2") // 클래스 선언부에는 상위 URL을 두고
+@Controller 
+@RequestMapping("/exam02_2") 
 public class Exam02_2 {
-
+    
     BoardDao boardDao;
     
     // ServletContext를 주입 받을 때도 인스턴스 변수로 주입받는다.
@@ -23,15 +23,16 @@ public class Exam02_2 {
     public void setBoardDao(BoardDao boardDao) {
         this.boardDao = boardDao;
     }
-    
+
     @Autowired
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
-    @RequestMapping("m1")
-    @ResponseBody
+    @RequestMapping("m1")  
+    @ResponseBody  
     public String m1() {
         return this.servletContext.getContextPath();
     }
+    
 }

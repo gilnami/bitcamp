@@ -3,21 +3,17 @@ package bitcamp.mvc.vo;
 import java.sql.Date;
 
 public class Board {
-    
     int no;
     String title;
     String content;
     Date createdDate;
     Member user;
     
-    
-    
     @Override
     public String toString() {
         return "Board [no=" + no + ", title=" + title + ", content=" + content + ", createdDate=" + createdDate
                 + ", user=" + user + "]";
     }
-    
     public Member getUser() {
         return user;
     }
@@ -48,7 +44,6 @@ public class Board {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-    
     
     
 }

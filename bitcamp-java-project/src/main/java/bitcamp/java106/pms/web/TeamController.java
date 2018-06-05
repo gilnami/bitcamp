@@ -88,7 +88,7 @@ public class TeamController {
         return "/team/view.jsp";
     }
     
-    @InitBinder
+/*    @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(
                 java.sql.Date.class, 
@@ -98,7 +98,7 @@ public class TeamController {
                         this.setValue(java.sql.Date.valueOf(text));
                     }
                 });
-    }
+    }*/
 }
 
 //ver 48 - CRUD 기능을 한 클래스에 합치기

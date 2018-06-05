@@ -1,4 +1,4 @@
-package bitcamp.mvc.web;
+package bitcamp.java106.pms.web.advice;
 
 import java.beans.PropertyEditorSupport;
 import java.sql.Date;
@@ -7,21 +7,18 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
 
-// 모든 페이지 컨트롤러에 대해 조언을 수행하는 클래스 정의
-// => 다음 애노테이션을 붙이면 프론트 컨트롤러는 페이지 컨트롤러를 실행하지 전에 
-//    먼저 이 클래스를 살펴볼 것이다.
 @ControllerAdvice
-public class Exam05_5_GlobalControllerAdvice {
-    @InitBinder 
+public class GlobalBindingInitializer {
+    // 컨트롤러 어드바이스 @InitBinder 메서드를 등록하면
+    // 각 페이지 컨트롤러마다 따로 등록할 필요가 없다.
+    @InitBinder
     public void initBinder(WebDataBinder binder) {
-        System.out.println("Exam05_5_GlobalControllerAdvice.initBinder()");
-        
         binder.registerCustomEditor(
-                java.sql.Date.class, 
+                Date.class,
                 new PropertyEditorSupport() {
                     @Override
                     public void setAsText(String text) throws IllegalArgumentException {
-                        this.setValue(Date.valueOf(text));
+                        super.setValue(Date.valueOf(text));
                     }
                 });
     }
