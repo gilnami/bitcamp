@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="../../header.jsp"/>
-<h1>실행 실패</h1>
+<h1>실행 실패!</h1>
 <p>${message}</p>
 </body>
 </html>

@@ -30,13 +30,8 @@ public class TeamMemberController {
         this.memberDao = memberDao;
         this.teamMemberDao = teamMemberDao;
     }
-
-    @RequestMapping("/form")
-    public void form(/*Model model*/) {
-        // model.addAttribute("프로퍼티명","값");
-    }
     
-    @RequestMapping("/add")
+    @RequestMapping("add")
     public String add(
             @RequestParam("teamName") String teamName,
             @RequestParam("memberId") String memberId,
@@ -48,58 +43,66 @@ public class TeamMemberController {
         }
         Member member = memberDao.selectOne(memberId);
         if (member == null) {
-            map.put("message", "해당 회원이 없습니다.");
-            return "/team/member/fail.jsp";
+            map.put("message", "해당 회원이 없습니다!");
+            return "team/member/fail";
         }
-        HashMap<String,Object> params = new HashMap<>();
-        params.put("teamName", teamName);
-        params.put("memberId", memberId);
-        if (teamMemberDao.isExist(params)) {
-            map.put("message", "이미 등록된 회원입니다.");
-            return "/team/member/fail.jsp";
-        }
-        teamMemberDao.insert(params);
-        return "redirect:../view.do?name=" + 
-                URLEncoder.encode(teamName, "UTF-8");
-    }
-    
-    @RequestMapping("/delete")
-    public String delete(
-            @RequestParam("teamName") String teamName,
-            @RequestParam("memberId") String memberId,
-            Map<String,Object> map) throws Exception {
         
         HashMap<String,Object> params = new HashMap<>();
         params.put("teamName", teamName);
         params.put("memberId", memberId);
+        
+        if (teamMemberDao.isExist(params)) {
+            map.put("message", "이미 등록된 회원입니다.");
+            return "team/member/fail";
+        }
+        teamMemberDao.insert(params);
+        return "redirect:../" + 
+                URLEncoder.encode(teamName, "UTF-8");
+    }
+    
+    @RequestMapping("delete")
+    public String delete(
+            @RequestParam("teamName") String teamName,
+            @RequestParam("memberId") String memberId,
+            Map<String,Object> map) throws Exception {
+         
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("teamName", teamName);
+        params.put("memberId", memberId);
+        
         int count = teamMemberDao.delete(params);
         if (count == 0) {
-            map.put("message", "해당 회원이 없습니다.");
-            return "/team/member/fail.jsp";
+            map.put("message", "해당 회원이 없습니다!");
+            return "team/member/fail";
         }
-        return "redirect:../view.do?name=" + 
+        return "redirect:../" + 
                 URLEncoder.encode(teamName, "UTF-8");
         // 개발자가 요청이나 응답헤더를 직접 작성하여 값을 주고 받으로 한다면,
         // URL 인코딩과 URL 디코딩을 손수 해 줘야 한다.
     }
     
-    @RequestMapping("/list")
+    @RequestMapping("list")
     public void list(
-            @RequestParam("name") String name,
+            @RequestParam("name") String teamName,
             Map<String,Object> map) throws Exception {
-
-        List<Member> members = teamMemberDao.selectListWithEmail(name);
+       
+        List<Member> members = teamMemberDao.selectListWithEmail(teamName);
         map.put("members", members);
     }
 }
 
+//ver 52 - InternalResourceViewResolver 적용
+//         *.do 대신 /app/* 을 기준으로 URL 변경
+//ver 51 - Spring WebMVC 적용
+//ver 50 - DAO 변경에 맞춰 메서드 호출 변경
+//ver 49 - 요청 핸들러의 파라미터 값 자동으로 주입받기
 //ver 48 - CRUD 기능을 한 클래스에 합치기
 //ver 47 - 애노테이션을 적용하여 요청 핸들러 다루기
 //ver 46 - 페이지 컨트롤러를 POJO를 변경
 //ver 45 - 프론트 컨트롤러 적용
 //ver 42 - JSP 적용
 //ver 40 - CharacterEncodingFilter 필터 적용.
-//         request.setCharacterEncodi   ng("UTF-8") 제거
+//         request.setCharacterEncoding("UTF-8") 제거
 //ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경

@@ -1,13 +1,11 @@
 package bitcamp.java106.pms.web;
 
-import java.beans.PropertyEditorSupport;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,61 +31,55 @@ public class TeamController {
         this.taskDao = taskDao;
     }
     
-    @RequestMapping("/form")
-    public void form(/*Model model*/) {
-        // 입력폼에서 사용할 데이터가 있다면
-        // 이 request handler에서 준비하면 된다.
-        // model.addAttribute("프로퍼티명","값");
-        
-        // 리턴할 view URL
-        // = prefix + request handler URL + suffix
-        // - "/WEB-INF/jsp/" + "board/form.do" + ".jsp"
+    @RequestMapping("form")
+    public void form() {
     }
     
-    @RequestMapping("/add")
-    public String add(
-            Team team) throws Exception {
+    @RequestMapping("add")
+    public String add(Team team) throws Exception {
         
         teamDao.insert(team);
-        return "redirect:list.do";
+        return "redirect:list";
     }
     
-    @RequestMapping("/delete")
-    public String delete(
-            @RequestParam("name") String name) throws Exception {
+    @RequestMapping("delete")
+    public String delete(@RequestParam("name") String name) throws Exception {
         
         HashMap<String,Object> params = new HashMap<>();
+        params.put("teamName", name);
+        
         teamMemberDao.delete(params);
+        
         taskDao.deleteByTeam(name);
+        
         int count = teamDao.delete(name);
+        
         if (count == 0) {
             throw new Exception ("해당 팀이 없습니다.");
         }
-        return "redirect:list.do";
+        return "redirect:list";
     }
     
-    @RequestMapping("/list")
-    public void list(
-            Map<String,Object> map) throws Exception {
+    @RequestMapping("list")
+    public void list(Map<String,Object> map) throws Exception {
         
         List<Team> list = teamDao.selectList();
         map.put("list", list);
     }
     
-    @RequestMapping("/update")
-    public String update(
-            Team team) throws Exception {
+    @RequestMapping("update")
+    public String update(Team team) throws Exception {
         
         int count = teamDao.update(team);
         if (count == 0) {
             throw new Exception("<p>해당 팀이 존재하지 않습니다.</p>");
         }
-        return "redirect:list.do";
+        return "redirect:list";
     }
     
-    @RequestMapping("/view")
-    public void view(
-            @RequestParam("name") String name,
+    @RequestMapping("{name}")
+    public String view(
+            @PathVariable String name,
             Map<String,Object> map) throws Exception {
         
         Team team = teamDao.selectOneWithMembers(name);
@@ -95,9 +87,12 @@ public class TeamController {
             throw new Exception("유효하지 않은 팀입니다.");
         }
         map.put("team", team);
+        return "team/view";
     }
     
-/*    @InitBinder
+    // GlobalBindingInitializer 에 등록했기 때문에 이 클래스에서는 제외한다.
+    /*
+    @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(
                 java.sql.Date.class, 
@@ -107,9 +102,14 @@ public class TeamController {
                         this.setValue(java.sql.Date.valueOf(text));
                     }
                 });
-    }*/
+    }
+    */
 }
 
+//ver 52 - InternalResourceViewResolver 적용
+//         *.do 대신 /app/* 을 기준으로 URL 변경
+//ver 51 - Spring WebMVC 적용
+//ver 49 - 요청 핸들러의 파라미터 값 자동으로 주입받기
 //ver 48 - CRUD 기능을 한 클래스에 합치기
 //ver 47 - 애노테이션을 적용하여 요청 핸들러 다루기
 //ver 46 - 페이지 컨트롤러를 POJO를 변경
