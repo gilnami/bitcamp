@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller 
-@RequestMapping("/exam07_3") 
-public class Exam07_3 {
+@RequestMapping("/exam08_1") 
+public class Exam08_1 {
     
     @GetMapping(value="m1/{value}", produces="text/plain;charset=UTF-8")  
     @ResponseBody
