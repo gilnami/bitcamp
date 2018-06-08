@@ -18,7 +18,7 @@ public class Exam08_2 {
             HttpSession session
             ) {
         // 세션에 보관된 값을 꺼내 출력하기
-        return String.format("m1(): name=%s, age=%d, working=%b",
+        return String.format("m1(): 세션에서 직접 값을 꺼내기 - name=%s, age=%d, working=%b",
                 session.getAttribute("name"),
                 session.getAttribute("age"),
                 session.getAttribute("working"));
@@ -31,7 +31,7 @@ public class Exam08_2 {
             ) {
         // 세션을 무효화 하기
         session.invalidate();
-        return String.format("m2(): 세션 무효화 시킴!");
+        return String.format("m2(): 세션을 직접 무효화 시킴!");
     }
 }
 
