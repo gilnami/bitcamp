@@ -13,6 +13,7 @@ public interface BoardDao {
     Board selectOne(int no);
 }
 
+//ver 52 - 페이지 단위로 데이터 가져오기
 //ver 50 - 클래스를 인터페이스로 변경
 //ver 33 - Mybatis 적용 
 //ver 32 - DB 커넥션 풀 적용

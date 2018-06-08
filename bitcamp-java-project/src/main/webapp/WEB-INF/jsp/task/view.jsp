@@ -16,7 +16,7 @@
 <table border='1'>
 <tr>
     <th>팀명</th>
-    <td><input type='text' name='teamName' value='${task.team.name}' readOnly></td>
+    <td><input type='text' value='${task.team.name}' readOnly></td>
 </tr>
 <tr>
     <th>작업명</th>
