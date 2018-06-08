@@ -2,14 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
     
     <context:component-scan base-package="bitcamp.java106.step13.ex2"/>
     
+    <!-- AOP filter 객체 생성 -->
+    <bean id="myAdvice" class="bitcamp.java106.step13.ex2.MyAdvice"/>
+    <!-- AOP 적용 -->
+    <aop:config>
+        <!-- 어느 pointcut에 어떤 advice를 끼워 넣을 지 설정한다. -->
+        <aop:aspect id="aspect1" ref="myAdvice">
+            <!-- filter를 끼워넣을 위치를 지정한다. -->
+            <aop:pointcut id="pointcut1"
+                 expression="execution(* bitcamp.java106.step13.ex2.*.m2(..))"/>
+            <!-- 해당 pointcut을 실행하기 전에 filter의 어떤 method를 넣을것인지 지정 -->
+            <aop:before pointcut-ref="pointcut1" method="advice1"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
 
 
