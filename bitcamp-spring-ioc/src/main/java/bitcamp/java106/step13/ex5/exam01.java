@@ -1,5 +1,5 @@
 // AOP(Aspect-Oriented Programming) - AOP filter 적용 위치
-package bitcamp.java106.step13.ex4;
+package bitcamp.java106.step13.ex5;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
