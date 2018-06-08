@@ -17,13 +17,16 @@
     <bean id="myAdvice" class="bitcamp.java106.step13.ex2.MyAdvice"/>
     <!-- AOP 적용 -->
     <aop:config>
-        <!-- 어느 pointcut에 어떤 advice를 끼워 넣을 지 설정한다. -->
+        <aop:pointcut expression="execution(* bitcamp.java106.step13.ex2.*.m2(..))" 
+                      id="pointcut1"/>
+        <!-- pointcut을 여러 aspect에서 재사용 할 수  있다. -->
         <aop:aspect id="aspect1" ref="myAdvice">
-            <!-- filter를 끼워넣을 위치를 지정한다. -->
-            <aop:pointcut id="pointcut1"
-                 expression="execution(* bitcamp.java106.step13.ex2.*.m2(..))"/>
-            <!-- 해당 pointcut을 실행하기 전에 filter의 어떤 method를 넣을것인지 지정 -->
-            <aop:before pointcut-ref="pointcut1" method="advice2"/>
+            <aop:before pointcut-ref="pointcut1" 
+                        method="advice1"/>
+        </aop:aspect>
+        <aop:aspect id="aspect2" ref="myAdvice">
+            <aop:after pointcut-ref="pointcut1" 
+                        method="advice2"/>
         </aop:aspect>
     </aop:config>
 </beans>

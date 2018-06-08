@@ -24,12 +24,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 //                    예) X, Y, C 클래스
 // => Aspect        : 어느 pointcut에 어떤 advice를 삽입할 것인지 가리키는 정보이다.
 //                    예) 설정 정보
-public class exam01 {
+public class exam04 {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext iocContainer =
                 new ClassPathXmlApplicationContext(
-                        "bitcamp/java106/step13/ex2/application-context-01.xml");
+                        "bitcamp/java106/step13/ex2/application-context-04.xml");
         
         String[] names = iocContainer.getBeanDefinitionNames();
         System.out.println("----------------------------------");

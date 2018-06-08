@@ -1,5 +1,5 @@
 // AOP(Aspect-Oriented Programming) 적용 후
-package bitcamp.java106.step13.ex2;
+package bitcamp.java106.step13.ex3;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

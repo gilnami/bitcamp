@@ -19,11 +19,9 @@
     <aop:config>
         <!-- 어느 pointcut에 어떤 advice를 끼워 넣을 지 설정한다. -->
         <aop:aspect id="aspect1" ref="myAdvice">
-            <!-- filter를 끼워넣을 위치를 지정한다. -->
-            <aop:pointcut id="pointcut1"
-                 expression="execution(* bitcamp.java106.step13.ex2.*.m2(..))"/>
-            <!-- 해당 pointcut을 실행하기 전에 filter의 어떤 method를 넣을것인지 지정 -->
-            <aop:before pointcut-ref="pointcut1" method="advice2"/>
+            <!-- pointcut과 method를 바로 연결할 수 있다. -->
+            <aop:before pointcut="execution(* bitcamp.java106.step13.ex2.*.m2(..))" 
+                        method="advice2"/>
         </aop:aspect>
     </aop:config>
 </beans>
