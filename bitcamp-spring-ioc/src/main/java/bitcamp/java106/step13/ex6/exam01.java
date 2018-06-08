@@ -1,14 +1,14 @@
 // AOP(Aspect-Oriented Programming) - annotation으로 AOP 설정하기
-package bitcamp.java106.step13.ex5;
+package bitcamp.java106.step13.ex6;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class exam01 {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext iocContainer =
-                new ClassPathXmlApplicationContext(
-                        "bitcamp/java106/step13/ex5/application-context-01.xml");
+        AnnotationConfigApplicationContext iocContainer =
+                new AnnotationConfigApplicationContext(
+                        AppConfig.class);
         
         String[] names = iocContainer.getBeanDefinitionNames();
         System.out.println("----------------------------------");

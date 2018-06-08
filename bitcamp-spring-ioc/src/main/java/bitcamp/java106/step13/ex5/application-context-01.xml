@@ -11,30 +11,13 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
     
-    <context:component-scan base-package="bitcamp.java106.step13.ex4"/>
+    <context:component-scan base-package="bitcamp.java106.step13.ex5"/>
     
-    <!-- AOP filter 객체 생성 -->
-    <bean id="myAdvice" class="bitcamp.java106.step13.ex4.MyAdvice"/>
-    <!-- AOP 적용 -->
-    <aop:config>
-        <!-- 어느 pointcut에 어떤 advice를 끼워 넣을 지 설정한다. -->
-        <aop:aspect id="aspect1" ref="myAdvice">
-            <!-- filter에서 호출하려는 method의 parameter value 받기-->
-            <aop:before 
-                pointcut="execution(* bitcamp.java106.step13.ex4.X.*(..)) and args(a,b)" 
-                method="doBefore"/>
-            <!-- method를 호출한 후 그 method가 return한 value 받기 -->
-            <aop:after-returning 
-                pointcut="execution(* bitcamp.java106.step13.ex4.X.*(..))" 
-                method="doAfterReturning"
-                returning="returnValue"/>
-            <!-- method를 호출할 때 예외가 발생했다면 그 예외정보를 받기 -->
-            <aop:after-throwing 
-                pointcut="execution(* bitcamp.java106.step13.ex4.X.*(..))" 
-                method="doAfterThrowing"
-                throwing="error"/>
-        </aop:aspect>
-    </aop:config>
+    <!-- 
+        annotation으로 AOP를 설정하려면 AOP 관련 annotation을 처리해주는 객체를 등록해야한다.
+        다음 tag를 선언하면 AOP 관련 annotation을 처리해주는 객체를 자동으로 등록한다.
+     -->
+    <aop:aspectj-autoproxy/>
 </beans>
 
 
