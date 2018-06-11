@@ -46,7 +46,10 @@ public class Exam01_insert {
         b3.setTitle("3333");
         b1.setContent("xxxx");
         
+        
+        
         boardService.test1(b1, b2, b3);
+        boardService.test2(b1, b2, b3);
         
         System.out.println("입력 완료");
     }
