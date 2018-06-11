@@ -2,12 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
     
     <context:component-scan base-package="step25.ex9"/>
     
@@ -47,6 +52,30 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="step25.ex9" />
     </bean>
+    
+    <!-- 트랜잭션 관리자를 어떤 메서드에 대해 어떻게 적용할 지 
+         AOP Advice 객체를 준비한다.
+         /별도의 클래스를 작성할 필요 없이 다음과 같이 XML로 설정하면 된다.
+     -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!-- 특정 메서드에 대해 read-only 여부를 지정할 수 있다. -->
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="select*" read-only="true"/>
+            
+            <!-- 그 밖의 모든 메서드는 insert,update,delete 가능! -->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <!-- 위에서 적용한 AOP Advice를 지정된 클래스의 특정 메서드에 적용한다. -->
+    
+    <aop:config>
+        <aop:advisor 
+	        advice-ref="txAdvice" 
+	        pointcut="execution(* step25.ex9.BoardService.*(..))"/>
+    </aop:config>
+    
 </beans>
 
 

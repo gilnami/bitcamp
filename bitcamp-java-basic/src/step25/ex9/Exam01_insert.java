@@ -20,7 +20,13 @@ public class Exam01_insert {
         
         // 트렌젝션 적용
         // 1) 트랜잭션 관리자를 등록해야한다.
-        //    => application-context
+        //    => application-context.xml 파일에 객체 추가
+        // 2) 트랜잭션 관리자가 동작하려면 DAO를 사용하는 객체도 
+        //    트랜잭션 관리자와 같은 컨테이너에 객체가 있어야한다.
+        //    즉 DAO의 메서드를 사용하는 객체 또한 SpringIoC 컨테이너에 있어야한다.
+        //    => DAO 메서드를 호출하는 Service 객체를 만든다.
+        //    => BoardService 추가
+        // 
         BoardDao boardDao = iocContainer.getBean(BoardDao.class);
                 
         
