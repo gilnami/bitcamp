@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.domain.Member;
+import bitcamp.java106.pms.service.MemberService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
-    MemberDao memberDao;
+    MemberService memberService;
     
-    public MemberController(MemberDao memberDao) {
-        this.memberDao = memberDao;
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
     }
     
     @RequestMapping("form")

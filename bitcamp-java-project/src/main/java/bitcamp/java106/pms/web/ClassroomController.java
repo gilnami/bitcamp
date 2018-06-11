@@ -1,7 +1,5 @@
 package bitcamp.java106.pms.web;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -12,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
+import bitcamp.java106.pms.service.ClassroomService;
 
 @Controller
 @RequestMapping("/classroom")
 public class ClassroomController {
     
-    ClassroomDao classroomDao;
+    ClassroomService classroomService;
     
-    public ClassroomController(ClassroomDao classroomDao) {
-        this.classroomDao = classroomDao;
+    public ClassroomController(ClassroomService classroomService) {
+        this.classroomService = classroomService;
     }
     
     @RequestMapping("form")
@@ -30,14 +29,14 @@ public class ClassroomController {
     @RequestMapping("add")
     public String add(Classroom classroom) throws Exception {
         
-        classroomDao.insert(classroom);
+        classroomService.add(classroom);
         return "redirect:list";
     }
     
     @RequestMapping("delete")
     public String delete(@RequestParam("no") int no) throws Exception {
      
-        int count = classroomDao.delete(no);
+        int count = classroomService.delete(no);
         if (count == 0) {
             throw new Exception("<p>해당 강의가 없습니다.</p>");
         }
@@ -48,20 +47,14 @@ public class ClassroomController {
     public void list(
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="3") int pageSize,
-            Map<String,Object> map) throws Exception {        
-        
-        HashMap<String,Object> params = new HashMap<>();
-        params.put("startRowNo", (pageNo - 1) * pageSize);
-        params.put("pageSize", pageSize);
-        
-        List<Classroom> list = classroomDao.selectList(params);
-        map.put("list", list);
+            Map<String,Object> map) {        
+        map.put("list", classroomService.list(pageNo, pageSize));
     }
     
     @RequestMapping("update")
     public String update(Classroom classroom) throws Exception {
      
-        int count = classroomDao.update(classroom);
+        int count = classroomService.update(classroom);
         if (count == 0) {
             throw new Exception("해당 강의가 존재하지 않습니다.");
         }
@@ -73,7 +66,7 @@ public class ClassroomController {
             @PathVariable int no, 
             Map<String,Object> map) throws Exception {
      
-        Classroom classroom = classroomDao.selectOne(no);
+        Classroom classroom = classroomService.get(no);
 
         if (classroom == null) {
             throw new Exception("유효하지 않은 강의입니다.");
