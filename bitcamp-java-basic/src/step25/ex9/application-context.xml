@@ -64,7 +64,7 @@
             <tx:method name="select*" read-only="true"/>
             
             <!-- 그 밖의 모든 메서드는 insert,update,delete 가능! -->
-            <tx:method name="*"/>
+            <tx:method name="test1"/>
         </tx:attributes>
     </tx:advice>
     
