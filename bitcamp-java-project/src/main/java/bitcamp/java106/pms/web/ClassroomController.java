@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.domain.Classroom;
 import bitcamp.java106.pms.service.ClassroomService;
 
@@ -47,7 +46,8 @@ public class ClassroomController {
     public void list(
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="3") int pageSize,
-            Map<String,Object> map) {        
+            Map<String,Object> map) throws Exception {        
+        
         map.put("list", classroomService.list(pageNo, pageSize));
     }
     
@@ -67,7 +67,6 @@ public class ClassroomController {
             Map<String,Object> map) throws Exception {
      
         Classroom classroom = classroomService.get(no);
-
         if (classroom == null) {
             throw new Exception("유효하지 않은 강의입니다.");
         }
@@ -91,6 +90,7 @@ public class ClassroomController {
     */
 }
 
+//ver 53 - DAO 대신 Service 객체 사용
 //ver 52 - InternalResourceViewResolver 적용
 //         *.do 대신 /app/* 을 기준으로 URL 변경
 //         페이지 관련 파라미터에 matrix variable 적용

@@ -1,17 +1,26 @@
+// 서비스 컴포넌트 - 회원관리 업무를 처리할 객체
 package bitcamp.java106.pms.service;
 
 import java.util.List;
-import java.util.Map;
 
-import bitcamp.java106.pms.domain.Classroom;
 import bitcamp.java106.pms.domain.Member;
 
 public interface MemberService {
-    int delete(String id);
-    List<Member> selectList(Map<String,Object> params);
-    Classroom selectOne(int no);
-    int insert(Member member);
+    // 서비스 컴포넌트에서 메서드명을 지을 때는 
+    // 업무 용어를 사용하라!
+    List<Member> list(int pageNo, int pageSize);
+    Member get(String id);
+    int add(Member member);
     int update(Member member);
-    Member selectOne(String id);
-    Member selectOneWithPassword(Map<String,Object> params);
+    int delete(String id);
+    boolean isExist(String id, String password);
 }
+
+//ver 53 - 인터페이스 추가
+
+
+
+
+
+
+

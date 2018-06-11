@@ -11,7 +11,7 @@ import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.service.BoardService;
 
 @Service
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     
     BoardDao boardDao;
     
@@ -48,3 +48,11 @@ public class BoardServiceImpl implements BoardService{
         return boardDao.delete(no);
     }
 }
+
+//ver 53 - 클래스 추가
+
+
+
+
+
+

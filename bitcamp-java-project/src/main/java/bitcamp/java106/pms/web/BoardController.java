@@ -33,6 +33,7 @@ public class BoardController {
     
     @RequestMapping("delete")
     public String delete(@RequestParam("no") int no) throws Exception {
+        
         int count = boardService.delete(no);
         if (count == 0) {
             throw new Exception("해당 게시물이 없습니다.");
@@ -45,11 +46,13 @@ public class BoardController {
             @MatrixVariable(defaultValue="1") int pageNo,
             @MatrixVariable(defaultValue="3") int pageSize,
             Map<String,Object> map) {        
+        
         map.put("list", boardService.list(pageNo, pageSize));
     }
     
     @RequestMapping("update")
     public String update(Board board) throws Exception {
+        
         int count = boardService.update(board);
         if (count == 0) {
             throw new Exception("해당 게시물이 존재하지 않습니다.");
@@ -72,6 +75,7 @@ public class BoardController {
 
 }
 
+//ver 53 - DAO 대신 Service 객체 사용
 //ver 52 - InternalResourceViewResolver 적용
 //         *.do 대신 /app/* 을 기준으로 URL 변경
 //         페이지 관련 파라미터에 matrix variable 적용

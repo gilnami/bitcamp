@@ -1,20 +1,67 @@
+// 업무로직 구현체 - 고객사 마다 다른 구현을 할 수 있다.
 package bitcamp.java106.pms.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.service.MemberService;
 
-public class MemberServiceImpl implements MemberService{
+@Service
+public class MemberServiceImpl implements MemberService {
+    
+    MemberDao memberDao;
+    
+    public MemberServiceImpl(MemberDao memberDao) {
+        this.memberDao = memberDao;
+    }
+    
     @Override
-    public List<Member> selectList(Map<String, Object> params) {
+    public List<Member> list(int pageNo, int pageSize) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("startRowNo", (pageNo - 1) * pageSize);
         params.put("pageSize", pageSize);
         
-        List<Member> list = memberDao.selectList(params);
-        return null;
+        return memberDao.selectList(params);
+    }
+    
+    @Override
+    public Member get(String id) {
+        return memberDao.selectOne(id);
+    }
+    
+    @Override
+    public int add(Member member) {
+        return memberDao.insert(member);
+    }
+    
+    @Override
+    public int update(Member member) {
+        return memberDao.update(member);
+    }
+    
+    @Override
+    public int delete(String id) {
+        return memberDao.delete(id);
+    }
+    
+    @Override
+    public boolean isExist(String id, String password) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("id", id);
+        params.put("password", password);
+        
+        return memberDao.count(params) > 0 ? true : false;
     }
 }
+
+//ver 53 - 클래스 추가
+
+
+
+
+
+
