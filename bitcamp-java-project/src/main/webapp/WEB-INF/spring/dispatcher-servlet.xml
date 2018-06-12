@@ -39,8 +39,6 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
     
-    
-    
     <context:property-placeholder 
         location="classpath:bitcamp/java106/pms/sql/jdbc.properties"/> 
         
