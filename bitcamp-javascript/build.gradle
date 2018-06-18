@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+
+    id 'eclipse-wtp' // = 'eclise' 플러그인 + 웹관련 작업들
+
+    id 'war'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    compile 'com.google.guava:guava:23.0'
+    
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+    testCompile 'junit:junit:4.12'
+
+}
+
+repositories {
+    jcenter()
+}
