@@ -5,24 +5,24 @@
 <title>ex04</title>
 </head>
 <body>
-<h1>객체 - 객체 생성과 초기화 V</h1>
+<h1>객체 - 객체 생성과 초기화 IV</h1>
 <script>
 "use strict"
 
-// {} 표기법을 이용하여 객체 생성과 초기화를 수행한다.  
+// 객체의 값을 다루는 함수를 객체에 추가한다.
 function createScore(name, kor, eng, math) {
-    return {
-        "name": name,
-        'kor': kor,
-        'eng': eng,
-        'math': math,
-        sum() { 
-            return this.kor + this.eng + this.math
-        },
-        aver() { 
-            return this.sum() / 3
-        }
-    }
+	var obj = new Object();
+	obj.name = name;
+	obj.kor = kor;
+	obj.eng = eng;
+	obj.math = math;
+	obj.sum = function() { 
+		return this.kor + this.eng + this.math;
+	};
+	obj.aver = function() { 
+		return this.sum() / 3;
+	};
+	return obj;
 }
 
 var scores = []; //new Array();
