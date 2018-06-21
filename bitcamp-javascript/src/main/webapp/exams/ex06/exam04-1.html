@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex06</title>
+</head>
+<body>
+<h1>이벤트 - 이벤트 단계</h1>
+<div id="d1">
+    <div id="d2">
+        <button id="btn1">버튼1</button><br>
+        <button id="btn2">버튼2</button><br>
+    </div>
+</div>
+<script>
+"use strict"
+
+// 이벤트가 발생하면 다음 3단계로 전달 된다.
+// 1) capture phase
+//      => 부모 태그에서 자식 태그로 내려가는 단계
+// 2) target phase
+//      => 이벤트가 발생된 목적지에 도달한 단계
+// 3) bubble phase
+//      => 다시 목적지에서 부모 태그로 올라가는 단계
+document.getElementById("btn1").addEventListener("click", function(e) {
+	console.log(this);
+});
+</script>
+</body>
+</html>
