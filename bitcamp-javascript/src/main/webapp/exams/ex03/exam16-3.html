@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>자바스크립트 글로벌함수 - eval()</h1>
+<textarea id="ta" rows="10" cols="80"></textarea>
+<button id="btn1">실행</button>
+<script>
+"use strict"
+// text로 된 javascript를 실행하는 function
+//
+// => "실행" button을 누르면 textarea 상자에 입력한 javascript를 실행시키기
+//
+var ta = document.getElementById("ta");
+
+document.getElementById("btn1").onclick = () => {
+	// input, textarea, select 등 입력폼 항목의 값을 꺼낼 때는
+	// innerHTML이 아니라 value property를 사용해야한다.
+    var str = ta.value;
+	
+	// eval(javascript code)
+	// => 이 function은 parameter로 주어진 javascript code를 실행시킨다.
+	eval(str);
+	
+	// eval()로 실행한 결과는 그대로 유지된다.
+	// 따라서 eval()에서 javascript code를 실행할 때
+	// window 객체에 name 값을 넣으면
+	// eval() 실행이 끝난 다음에도 그대로 유지된다.
+	console.log("name=", window.name);
+};
+
+</script>
+</body>
+</html>
