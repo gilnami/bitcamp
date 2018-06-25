@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <title>ex06</title>
 <style>
-    body, div {
-        border: 1px solid red;
-        padding: 30px;
-    }
-    
-    button {padding: 30px;}
+body, div {
+    border: 1px solid red;
+    padding: 30px; 
+}
+button {padding: 30px;}
 </style>
 </head>
 <body>
-<h1>이벤트 - bubble 대신 capture와  단계에 호출될 함수 등록하기</h1>
+<h1>이벤트 - bubble 대신 capture와 target 단계에서 호출되는 리스너 등록하기</h1>
 <div id="d1">d1
     <div id="d2">d2
         <button id="btn1">버튼1</button>
@@ -24,7 +23,7 @@
 "use strict"
 
 // addEventListener(이벤트타입, 리스너, 캡쳐여부)에서
-// 세번째 파라미터(캡쳐여부)의 값을 true로 설정하라. 기본은 false이다.
+// 세 번째 파라미터의 값을 true로 설정하라. 기본은 false이다.
 document.getElementById("btn1").addEventListener("click", function(e) {
 	console.log("버튼1...");
 }, true);
@@ -33,15 +32,17 @@ document.getElementById("btn2").addEventListener("click", function(e) {
     console.log("버튼2...");
 });
 
-// 캡쳐단계에서 호출되도록 설정한다.
+// 캡쳐 단계에서 호출되도록 설정한다.
 document.getElementById("d2").addEventListener("click", function(e) {
     console.log("d2...");
 }, true);
 
+//캡쳐 단계에서 호출되도록 설정한다.
 document.getElementById("d1").addEventListener("click", function(e) {
     console.log("d1...");
 }, true);
 
+//캡쳐 단계에서 호출되도록 설정한다.
 document.body.addEventListener("click", function(e) {
     console.log("body...");
 }, true);
@@ -53,3 +54,8 @@ document.body.addEventListener("click", function(e) {
 </script>
 </body>
 </html>
+
+
+
+
+

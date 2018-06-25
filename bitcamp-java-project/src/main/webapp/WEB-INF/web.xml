@@ -19,12 +19,14 @@
       서버 관리자 화면에서 출력될 웹 애플리케이션 이름을 적는 태그이다.
     </display-name>
 
-    <!--  
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>bitcamp.java106.pms.AppConfig</param-value>
+        <param-value>/WEB-INF/spring/application-context.xml</param-value>
     </context-param>
-    -->
+    
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
@@ -45,6 +47,23 @@
     
     <!-- 프론트 컨트롤러 서블릿 등록 및 정보 설정 -->
     <servlet>
+        <servlet-name>json</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/json-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+        <multipart-config>
+            <max-file-size>5000000</max-file-size>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>json</servlet-name>
+        <url-pattern>/json/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -60,8 +79,6 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- 서블릿 실행 도중 특정 예외가 발생하면 실행될 JSP를 지정한다. -->
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
