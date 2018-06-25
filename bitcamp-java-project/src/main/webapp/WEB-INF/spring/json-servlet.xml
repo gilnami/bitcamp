@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
     <context:component-scan base-package="bitcamp.java106.pms.web">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="aspectj" expression="bitcamp.java106.pms.web.*Controller"/>
     </context:component-scan>
     
     <mvc:annotation-driven enable-matrix-variables="true"/>
