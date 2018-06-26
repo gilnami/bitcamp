@@ -33,75 +33,53 @@
 
 
 <script src="../js/bitcamp.js"></script>
-<!-- <script src="../header.js"></script> -->
+<script src="../header.min.js"></script>
 <script>
 
 if (location.href.split("?").length > 1) {
-    var tags = $(".input-view");
+	var tags = $(".input-view");
     tags.css("display", "none");
     
-    var no = location.href.split("?")[1].split("=")[1];
-    
-    $.getJSON("../../json/board/" + no, function(data) {
+	var no = location.href.split("?")[1].split("=")[1];
+	
+	$.getJSON("../../json/board/" + no, function(data) {
         $(fNo).val(data.no);
         $(fTitle).val(data.title);
         $(fContent).val(data.content);
         $(fCreatedDate).val(data.createdDate);
-    });
-    
-    $("#updBtn").click(() => {
-        $.post("../../json/board/update", {
-            title: $(fTitle).val(),
-            content: $(fContent).val(),
-            no: $(fNo).val()
-        }, () => {
-            location.href = "list.html";
-        });
-    });
-    
-    document.querySelector("#delBtn").onclick = () => {
+	});
+	
+	$("#updBtn").click(() => {
+		$.post("../../json/board/update", {
+			title: $(fTitle).val(),
+			content: $(fContent).val(),
+			no: $(fNo).val()
+		}, () => {
+			location.href = "list.html";
+		});
+	});
+	
+    $("#delBtn").click(() => {
         if (window.confirm("삭제하시겠습니까?") == false) 
-            return;
+        	return;
         
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    location.href = "list.html";
-                } else {
-                    window.alert("삭제 실패!")
-                }
-            }
-        };
-        xhr.open("GET", "../../json/board/delete?no=" + no, true);
-        xhr.send();
-    };
-    
+        $.get("../../json/board/delete", {"no": no}, () => {
+        	location.href = "list.html";
+        });
+	});
+	
 } else { // 새 글 등록
-    var tags = document.querySelectorAll(".detail-view");
-    for (var tag of tags) {
-        tag.style.display = "none"; // <h1 style="display: none;">...</h1>
-    }
+    var tags = $(".detail-view");
+    tags.css("display", "none");
     
-    document.querySelector("#addBtn").onclick = () => {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 201) {
-                    location.href = "list.html";
-                } else {
-                    window.alert("등록 실패!")
-                }
-            }
-        };
-        xhr.open("POST", "../../json/board/add", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //주의!
-        //=> 자바스크립트의 AJAX를 사용하여 직접 서버에 한글을 포함하는 데이터를 보낼 때는
-        //   개발자가 URL 인코딩 해서 보내야 한다.
-        xhr.send("title=" + encodeURIComponent(fTitle.value) + 
-                "&content=" + encodeURIComponent(fContent.value));
-    };
+    $("#addBtn").click(() => {
+    	$.post("../../json/board/add", {
+    		title: $(fTitle).val(),
+            content: $(fContent).val()
+    	}, () => {
+    		location.href = "list.html";
+    	});
+    });
 }
 
 </script>
