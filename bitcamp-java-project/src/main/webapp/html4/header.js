@@ -1,5 +1,5 @@
 // div#header 태그에 /html/header.html 내용을 삽입한다.
-$.get("/bitcamp-java-project/html3/header.html", (data) => {
+$.get("/bitcamp-java-project/html4/header.html", (data) => {
 	$("#header").html(data);
 	loadLoginUser();
 });
@@ -11,10 +11,10 @@ function loadLoginUser() {
 				window.alert("okok");
 				e.preventDefault(); // 클릭했을 때 원래 하던일은 하지말라!
 				$.get("/bitcamp-java-project/json/auth/logout", () => {
-					location.href = "/bitcamp-java-project/html3/auth/login.html";
+					location.href = "/bitcamp-java-project/html4/auth/login.html";
 			});
 		});
 	}).fail(() => {
-		location.href = "/bitcamp-java-project/html3/auth/login.html";
+		location.href = "/bitcamp-java-project/html4/auth/login.html";
 	});
 }
