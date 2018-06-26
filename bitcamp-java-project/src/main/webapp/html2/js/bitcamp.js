@@ -35,10 +35,13 @@ var jQuery = function(param) {
  };
 
    tags.val = function(value) {
-      for (var tag of tags) {
-         tag.value = value;
-      }
-      return tags;
+        if (arguments.length == 0) {
+            return tags[0].value;
+        }
+        for (var tag of tags) {
+            tag.value = value;
+        }
+        return tags;
    };
 
    tags.click = function(listener) {
@@ -97,7 +100,7 @@ jQuery.ajax = (url, settings) => {
    }   
 };
 
-jQuery.getJSON = (url, p1, p2) => {
+jQuery.getJSON = function(url, p1, p2) {
    // 호출 예:
    if (p1 == undefined || typeof p1 != "function") {
       // => getJSON("board/list");
@@ -116,5 +119,48 @@ jQuery.getJSON = (url, p1, p2) => {
        });
    }
 };
+
+jQuery.post = function(url, p1, p2, p3) {
+    var settings = {
+        method = "POST"
+    };
+    if (arguments.length == 2) {
+        if (typeof p1 == "function") settings.success = p1;
+        else if (typeof p1 == "string") settings.dataType = p1;
+        else settings.data = p1;
+    } else if (arguments.length == 3) {
+        // .post(url, data, function);
+        if (typeof p2 == "function") {
+            settings.data = p1;
+            settings.success = p2;
+        } else if (typeof p2 == "string") {
+            settings.dataType = p2;
+            if (typeof p1 == "function") settings.success = p1;
+            else settings.data = p1;
+        }
+    } else if (arguments.length == 4) {
+        settings.data = p1;
+        settings.success = p2;
+        settings.dataType = p3;
+    }
+    jQuery.ajax(url, settings);
+
+    if (p1 == undefined || typeof p1 != "function") {
+       // => getJSON("board/list");
+       // => getJSON("board/list", {pageNo:1,pageSize:5});
+       // => getJSON("board/list", {pageNo:1,pageSize:5}, function(data) {...});
+       jQuery.ajax(url, {
+           "data": p1,
+           "dataType": "json",
+           "success": p2
+        });
+    } else if (typeof p1 == "function") {
+       // => getJSON("board/list", function() {});
+       jQuery.ajax(url, {
+          "dataType": "json",
+           "success": p1
+        });
+    }
+ };
 
 var $ = jQuery;

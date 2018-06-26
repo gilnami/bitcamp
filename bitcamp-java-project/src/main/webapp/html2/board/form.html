@@ -51,22 +51,14 @@ if (location.href.split("?").length > 1) {
     });
 	
 	$("#updBtn").click(() => {
-		var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    location.href = "list.html";
-                } else {
-                    window.alert("변경 실패!")
-                }
-            }
-        };
-        xhr.open("POST", "../../json/board/update", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("title=" + encodeURIComponent(fTitle.value) + 
-                "&content=" + encodeURIComponent(fContent.value) + 
-                "&no=" + fNo.value);
-	});
+        $.post("../../json/board/update", {
+            title: $(fTitle).val(),
+            content: $(fContent).val(),
+            no: $(fNo).val()
+        }, () => {
+            location.href = "list.html";
+        });
+    });
 	
     document.querySelector("#delBtn").onclick = () => {
         if (window.confirm("삭제하시겠습니까?") == false) 
