@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <meta property="og:title" content="탐라는제주">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <!-- sub08 -->
+    <link rel="stylesheet" type="text/css" href="../../css/sub08.css">
+    <!-- logo font -->
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </script>
+    <script type="text/javascript" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- drozone -->
+    <link rel="stylesheet" href="../../node_modules/dropzone/dist/min/dropzone.min.css">
+    <link rel="stylesheet" href="../../node_modules/dropzone/dist/min/basic.min.css">
+    <script type="text/javascript" src="../../node_modules/dropzone/dist/min/dropzone.min.js"></script>
+
+    <!-- sweetArert2 -->
+    <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <script type="text/javascript" src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <!--metadata-->
+    <script type="text/javascript" src="metadeta/jpegmeta.js"></script>
+    <script type="text/javascript" src="metadeta/demo.js"></script>
+
+
+    <style type="text/css">
+        @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+    </style>
+</head>
+
+<body>
+    <div class="editor-header" id="se_top_menu_area">
+        <div class="header-default">
+            <div class="header-nav">
+                <div>
+                    <button id="save">저장</button>
+                    <button id="submit">발행</button>
+                    <button id="exit">나가기</button>
+                </div>
+
+            </div>
+
+
+            <div id="se_doctoolbar" class="header-docProperty">
+
+            </div>
+
+        </div>
+        <div class="header_title">TamLaIsJeJu</div>
+    </div>
+    <div id="sub08" class="editor_wrap">
+
+        <div class="editor_container clear">
+
+            <div class="editor-side-innerWrap">
+                <div class="editor_side_inner_content">
+                    <div class="editor_side_btn">
+                        <p>사진도구</p>
+                        <button class="side_upload_btn" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            <span class="side_upload" ></span> 사진업로드</button>
+                        <button class="side_sns_btn">
+                            <span class="side_sns"></span>sns사진</button>
+                        <button class="side_lib_btn">
+                            <span class="side_lib"></span>사진보관함</button>
+                        <button class="side_auto_btn">
+                            <span class="side_auto"></span>자동포스팅</button>
+                    </div>
+
+                    <!-- <div class="editor_side_partner">
+                        <p>
+                            일행
+                        </p>
+                        <div class=".partner_selector">
+                            <ul class="clear">
+                                <li id="p_type1">
+                                    혼자
+                                </li>
+                                <li id="p_type2">
+                                    부모님
+                                </li>
+                                <li id="p_type3">
+                                    아이
+                                </li>
+                                <li id="p_type4">
+                                    커플
+                                </li>
+                                <li id="p_type5">
+                                    친구
+                                </li>
+                                <li id="p_type6">
+                                    단체
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="editor_side_favorite">
+                        <p>
+                            취향
+                        </p>
+                        <div class="favorite_selector">
+                            <ul class="clear">
+                                <li id="p_type1">
+                                    걷기
+                                </li>
+                                <li id="p_type2">
+                                    사진
+                                </li>
+                                <li id="p_type3">
+                                    힐링
+                                </li>
+                                <li id="p_type4">
+                                    관광
+                                </li>
+                                <li id="p_type5">
+                                    드라이브
+                                </li>
+                                <li id="p_type6">
+                                    체험
+                                </li>
+                                <li id="p_type7">
+                                    교육
+                                </li>
+                                <li id="p_type8">
+                                    엑티비티
+                                </li>
+                                <li id="p_type9">
+                                    쇼핑
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                    <div class="editor_side_tag">
+                        <p>
+                            HashTag 입력
+                        </p>
+                        <div class="animated bounceInDown">
+
+                            <input id="input" type="text" placeholder="HashTag 엔터로 입력">
+                            <button id="enter">hashtag</button>
+                            <ul id="tag_box" class="tag_cls">
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="content_wrap">
+                <div class="title_wrap">
+                    <div class="title_text">
+                        <form>
+                            <textarea class="title_textarea text_area" placeholder="제목" rows="1" data-is-observable="false"></textarea>
+                        </form>
+                    </div>
+                </div>
+                <div class="map_wrap">
+                    <div class="contnet_map">
+                        <!-- <div id="map" class=map style="width:100%;height:400px;"></div> -->
+                        <div class=map style="width: 100%;height: 400px;background-color: teal;"></div>
+                    </div>
+                </div>
+                <div class="cal_warp">
+                    <div class="cal">
+                        <div class="start_date date-picker">
+                            <div class="input">
+                                <div class="result">
+                                    <span class="date_text">출발일</span>
+                                    <span id="sdt" class="date_result"></span>
+                                </div>
+                                <button>
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                            <div class="calendar"></div>
+                        </div>
+                        <div class="end_date date-picker">
+                            <div class="input">
+                                <div class="result">
+                                    <span class="date_text">도착일</span>
+                                    <span id="edt" class="date_result"></span>
+                                </div>
+                                <button>
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                            <div class="calendar"></div>
+                        </div>
+                        <div class="cal_days">
+                            <span>총</span>
+                            <span id="cal_day">0</span>
+                            <spam>일</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post_wrap">
+                    <div class="post_imgbox" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                        클릭하여 사진 등록
+                        <img src="">
+                    </div>
+                    <div class="post_text">
+
+
+                        <form>
+                            <input id="post_title" type="text" value="" class="post_titl" placeholder="장소">
+                            <input id="post_address" type="text" onclick="/*sample5_execDaumPostcode()*/" class="post_addr" value="" placeholder="주소"
+                                readonly>
+                            <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+                            <textarea id="post_text_form" class="title_textarea text_area" placeholder="내용을 입력하세요." data-is-observable="false"></textarea>
+                            <div class="text_count">글자제한:
+                                <span class="count">80</span>/80</div>
+                                <button onclick="map()"></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!--모달-->
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>사진업로드</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--dropzone-->
+
+                        <div id="xForm">
+
+                            <input type="text" id="txtData" />
+
+                        </div>
+
+                        <div id="trueForm">
+
+                            <form action="/" class="dropzone dz_form" enctype="multipart/form-data" id="my-dropzone" method="post">
+                                <span class="dz_ico">+</span>
+                                <!-- 고유 값이 필요한 경우 -->
+
+
+                            </form>
+
+                            <div class="clear">
+
+                                <!--업로드 버튼을 여러 장의 사진 일회용 업로드 기능 제공-->
+
+                                <!-- <button id="btnAllClear" disabled="disabled">취소</button> -->
+
+                                <button type="submit" id="btnSubmit" disabled="disabled">등록</button>
+
+                            </div>
+
+                        </div>
+
+                        <div id="falseForm" style="display:none;">
+
+                            지원하지 않는 브라우저입니다.
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 모달2 -->
+            <div id="dropbox" class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>사진업로드</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div>
+                        <h1>사진업로드</h1>
+                        <form id="form" action="javascript:void(0)">
+                          <p>Choose JPEG file: <input id="fileWidget" type="file"></p>
+                        </form>
+                        <img id="img" height="100" alt="Image preview" src="">
+                        <div id="status"></div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=619a7dc4f7d23963aa128663f464c8d5&libraries=services"></script> -->
+
+
+        <!-- <script>
+        // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+        var infowindow = new daum.maps.InfoWindow({
+            zIndex: 1
+        });
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+                level: 5 // 지도의 확대 레벨
+            };
+
+
+
+        // 지도를 생성합니다    
+        var map = new daum.maps.Map(mapContainer, mapOption);
+
+        // 장소 검색 객체를 생성합니다
+        var ps = new daum.maps.services.Places();
+
+        // 키워드로 장소를 검색합니다
+        ps.keywordSearch('제주도', placesSearchCB);
+
+        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+        function placesSearchCB(data, status, pagination) {
+            if (status === daum.maps.services.Status.OK) {
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                // LatLngBounds 객체에 좌표를 추가합니다
+                var bounds = new daum.maps.LatLngBounds();
+
+                for (var i = 0; i < data.length; i++) {
+                    displayMarker(data[i]);
+                    bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
+                }
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                map.setBounds(bounds);
+            }
+        }
+
+        // 지도에 마커를 표시하는 함수입니다
+        function displayMarker(place) {
+
+            // 마커를 생성하고 지도에 표시합니다
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: new daum.maps.LatLng(place.y, place.x)
+            });
+
+            // 마커에 클릭이벤트를 등록합니다
+            daum.maps.event.addListener(marker, 'click', function () {
+                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
+                    '</div>');
+                infowindow.open(map, marker);
+            });
+        }
+
+
+        function relayout() {
+
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }
+    </script> -->
+
+        <!-- <script>
+        $('.js-timeline').Timeline({
+            dotsPosition: 'top'
+        });
+
+        // Dots Position Top
+        $('.timeline-2').Timeline({
+            itemClass: 'box-item',
+            dotsPosition: 'top',
+            startItem: 'last'
+        });
+    </script> -->
+
+        <script>
+            $(function () {
+                $('.text_count').each(function () {
+                    // count 정보 및 count 정보와 관련된 textarea/input 요소를 찾아내서 변수에 저장한다.
+                    var $count = $('.count', this);
+                    var $input = $(this).prev();
+                    // .text()가 문자열을 반환하기에 이 문자를 숫자로 만들기 위해 1을 곱한다.
+                    var maximumCount = $count.text() * 1;
+                    // update 함수는 keyup, paste, input 이벤트에서 호출한다.
+                    var update = function () {
+                        var before = $count.text() * 1;
+                        var now = maximumCount - $input.val().length;
+                        // 사용자가 입력한 값이 제한 값을 초과하는지를 검사한다.
+                        if (now < 0) {
+                            var str = $input.val();
+                            alert('글자 입력수가 초과하였습니다.');
+                            $input.val(str.substr(0, maximumCount));
+                            now = 0;
+                        }
+                        // 필요한 경우 DOM을 수정한다.
+                        if (before != now) {
+                            $count.text(now);
+                        }
+                    };
+                    // input, keyup, paste 이벤트와 update 함수를 바인드한다
+                    $input.bind('input keyup paste', function () {
+                        setTimeout(update, 0)
+                    });
+                    update();
+                });
+            });
+        </script>
+
+        <script>
+            // 캘린더
+            $(document).ready(function () {
+                $("#total_cost").text($("#total_cost_value").val())
+            });
+
+
+            $(function () {
+                $(".calendar").datepicker({
+                    dateFormat: 'yy/mm/dd',
+                    firstDay: 1
+                });
+
+                $(document).on('click', '.date-picker .input', function (e) {
+                    var $me = $(this),
+                        $parent = $me.parents('.date-picker');
+                    $parent.toggleClass('open');
+                });
+
+
+
+                $(".calendar").on("change", function () {
+
+                    var $me = $(this),
+                        $selected = $me.val(),
+                        $parent = $me.parents('.date-picker');
+                    $parent.find('.date_text').siblings('span').html($selected);
+                    $parent.toggleClass('open');
+                    var str = '';
+                    var str2 = '';
+                    for (var i = 0; i < $('#sdt').length; i++) {
+                        str += $('#sdt').eq(i).html();
+                    }
+                    for (var i = 0; i < $('#edt').length; i++) {
+                        str2 += $('#edt').eq(i).html();
+                    }
+                    var dateArray = str.split("/");
+                    var dateArray2 = str2.split("/");
+                    var dateObj = new Date(dateArray[0], Number(dateArray[1]) - 1, dateArray[2]);
+                    var dateObj2 = new Date(dateArray2[0], Number(dateArray2[1]) - 1, dateArray2[2]);
+                    var betweenDay = (dateObj2.getTime()) / 1000 / 60 / 60 / 24 - dateObj.getTime() /
+                        1000 /
+                        60 / 60 / 24;
+                    var $edt = $('#edt')
+                    var $sdt = $("#sdt")
+                    console.log(betweenDay)
+                    if (betweenDay || betweenDay == 0) {
+                        if (betweenDay < 0) {
+                            swal({
+                                type: 'error',
+                                title: '입력실패',
+                                text: '출발일과 도착일을 확인해주세요',
+                            })
+                            document.getElementById('sdt').innerHTML = "";
+                            document.getElementById('edt').innerHTML = "";
+                            document.getElementById('cal_day').innerHTML = "0";
+                            return;
+                        }
+                        document.getElementById('cal_day').innerHTML = betweenDay + 1;
+
+                    }
+                });
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            //Dropzone 초기화, myDropzone form 있는 id 위해
+
+            Dropzone.options.myDropzone = {
+
+                //업로드 그림 경로 지정
+                url: '@Url.Action("dropZone", "Home")',
+
+                // 파라메터 지정
+                //params: {"Data" : xx},
+                //업로드 취소 및 추가 삭제 미리 보기 그림 링크 를 기본 안 추가
+                addRemoveLinks: true,
+
+                // 자동 업로드 끔
+                autoProcessQueue: false,
+
+                // 최대 업로드 카운트
+                maxFiles: 20,
+
+                //여러 개의 사진 업로드 허용
+                uploadMultiple: true,
+
+                // 병렬처리 WebConfig도 같이 수정해줘야함.
+                parallelUploads: 20,
+
+                // 최대 업로드 용량 Mb 단위
+                maxFilesize: 100,
+                method: 'post',
+
+                // 허용 확장자
+                acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+
+
+
+                // 기본 true false 로 주면 아무 동작 못함
+                clickable: true,
+
+                // 지원하지 않는 IE 10 미만일 경우
+                fallback: function () {
+                    document.getElementById('trueForm').style.display = "none";
+                    document.getElementById('falseForm').style.display = 'block';
+                },
+
+                init: function () {
+                    var submitButton = document.querySelector("#btnSubmit")
+                    var allClearButton = document.querySelector("#btnAllClear")
+
+                    myDropzone = this; // closure
+
+                    // Call the action method to load the images from the server
+                    // $.getJSON("../..//getList").done(function (data) {
+                    //     if (data.Data != '') {
+
+                    //         $.each(data.Data, function (index, item) {
+                    //             //// Create the mock file:
+                    //             var mockFile = {
+                    //                 name: item.fileName, // 마우스 오버 네임
+                    //                 size: item.Size
+                    //             };
+
+                    //             // Call the default addedfile event handler
+                    //             myDropzone.emit("addedfile", mockFile);
+
+                    //             // And optionally show the thumbnail of the file:
+                    //             myDropzone.emit("thumbnail", mockFile, item.Path);
+
+                    //             // If you use the maxFiles option, make sure you adjust it to the
+                    //             // correct amount:
+                    //             //var existingFileCount = 1; // The number of files already uploaded
+                    //             //myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+
+                    //         });
+                    //     }
+                    // });
+
+
+
+                    // 업로드 버튼 이벤트 등록
+                    submitButton.addEventListener("click", function () {
+
+                        // tell Dropzone to process all queued files
+                        // 다른 폼의 데이터를 Dropzone 안의 히든 폼으로 주고 서브밋 시키면 Form 2개 데이터를 취합할 수 있다.
+                        $('#hideTxtData').attr('value', $('#txtData').val());
+                        myDropzone.processQueue();
+                    });
+
+                    // // All Clear
+                    // allClearButton.addEventListener("click", function () {
+
+                    //     // Using "_this" here, because "this" doesn't point to the dropzone anymore
+                    //     if (confirm('정말 전체 항목을 삭제하겠습니까?')) {
+                    //         // 서버 삭제 로직
+                    //         $.ajax({
+                    //             url: '@Url.Action("removeAll","Home")',
+                    //             type: 'POST',
+                    //             success: function (data) {
+                    //                 if (data.Data == 'OK') {
+                    //                     myDropzone.removeAllFiles(true); // true 주면 업로드 중인 파일도 다 같이 삭제
+                    //                     //document.location.reload();
+                    //                 }
+                    //             }
+                    //         });
+                    //     }
+
+                    //     // If you want to cancel uploads as well, you
+                    //     // could also call _this.removeAllFiles(true);
+                    // });
+
+                    // maxFiles 카운터를 초과하면 경고창
+                    this.on("maxfilesexceeded", function (data) {
+                        alert('최대 업로드 파일 수는 20개 입니다.');
+                    });
+
+                    // Dropzone에 이미지가 추가되면 업로드 버튼 활성화
+                    this.on("addedfile", function () {
+                        $("#btnSubmit").removeAttr("disabled");
+                        $("#btnAllClear").removeAttr("disabled");
+                    });
+
+
+                    //업로드 완료 후 사건 내가 받아들일 위해 JSON 데이터 형식
+                    this.on("complete", function (data) {
+                        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length ===
+                            0) {
+                            if (data.xhr != undefined) {
+                                var res = eval('(' + data.xhr.responseText + ')');
+
+                                //var res = data;
+                                var msg;
+                                if (res.Result) {
+                                    msg = "이미지 업로드 완료( " + res.Count + " )";
+                                } else {
+                                    msg = "업로드 실패: " + res.Message;
+                                }
+                                alert(msg);
+                            }
+                        }
+                    });
+
+                    // 이미지 삭제
+                    this.on("removedfile", function (data) {
+                        //alert(data.name);   // 삭제할 파일명       
+                        // 서버 삭제 로직
+
+                        $.ajax({
+                            url: '@Url.Action("removeTarget","Home")',
+                            type: 'POST',
+                            data: {
+                                'PK': data.name
+                            }
+                        });
+
+                        if (this.getAcceptedFiles().length === 0) {
+                            $("#btnSubmit").attr("disabled", true);
+                            $("#btnAllClear").attr("disabled", true);
+                        }
+                    });
+                }
+            };
+        </script>
+        <!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+        <script>
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                    mapOption = {
+                        center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+                        level: 5 // 지도의 확대 레벨
+                    };
+            
+                //지도를 미리 생성
+                var map = new daum.maps.Map(mapContainer, mapOption);
+                //주소-좌표 변환 객체를 생성
+                var geocoder = new daum.maps.services.Geocoder();
+                //마커를 미리 생성
+                var marker = new daum.maps.Marker({
+                    position: new daum.maps.LatLng(37.537187, 127.005476),
+                    map: map
+                });
+            
+            
+                function sample5_execDaumPostcode() {
+                    new daum.Postcode({
+                        oncomplete: function(data) {
+                            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                            var fullAddr = data.address; // 최종 주소 변수
+                            var extraAddr = ''; // 조합형 주소 변수
+            
+                            // 기본 주소가 도로명 타입일때 조합한다.
+                            if(data.addressType === 'R'){
+                                //법정동명이 있을 경우 추가한다.
+                                if(data.bname !== ''){
+                                    extraAddr += data.bname;
+                                }
+                                // 건물명이 있을 경우 추가한다.
+                                if(data.buildingName !== ''){
+                                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                }
+                                // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                            }
+            
+                            // 주소 정보를 해당 필드에 넣는다.
+                            document.getElementById("addr_btn").value = fullAddr;
+                            // 주소로 상세 정보를 검색
+                            geocoder.addressSearch(data.address, function(results, status) {
+                                // 정상적으로 검색이 완료됐으면
+                                if (status === daum.maps.services.Status.OK) {
+            
+                                    var result = results[0]; //첫번째 결과의 값을 활용
+            
+                                    // 해당 주소에 대한 좌표를 받아서
+                                    var coords = new daum.maps.LatLng(result.y, result.x);
+                                    // 지도를 보여준다.
+                                    mapContainer.style.display = "block";
+                                    map.relayout();
+                                    // 지도 중심을 변경한다.
+                                    map.setCenter(coords);
+                                    // 마커를 결과값으로 받은 위치로 옮긴다.
+                                    marker.setPosition(coords)
+                                }
+                            });
+                        }
+                    }).open();
+                }
+            </script> -->
+
+        <script>
+            var button = document.getElementById("enter");
+            var input = document.getElementById("input");
+            var ul = document.getElementById("tag_box");
+            var li = document.getElementById("tag_box").getElementsByTagName("li");
+            var deleteBtns = document.getElementsByClassName("delete");
+            var cnt
+
+            function inputLength() {
+                return input.value.length;
+            }
+
+            function createListElement() {
+                cnt = $("#tag_box > li").length;
+                console.log(cnt);
+                if (cnt > 4) {
+                    swal({
+                                type: 'error',
+                                title: '입력초과',
+                                text: 'HashTag는 5개까지 입력가능합니다.',
+                            })
+                        return;
+                }
+                if (input.value.replace(/\s/g, '') && input.value.replace(/\#/g, '')) {
+                    var li = document.createElement("li");
+                    var button = document.createElement("button");
+                    button.appendChild(document.createTextNode("X"));
+                    li.appendChild(document.createTextNode('#' + input.value.replace(/\s/g, '').replace(/\#/g, '')));
+                    ul.appendChild(li);
+                    li.appendChild(button)
+                    input.value = "";
+
+                    li.classList.add("items", "it");
+                    
+                    button.addEventListener("click", deleteItem);
+                    button.classList.add("delete");
+                    return;
+                }
+            }
+
+            function addNewItemAfterClick() {
+                if (inputLength() > 0) {
+                    createListElement();
+                }
+            }
+
+            function addNewItemAfterKeypress(event) {
+                if (inputLength() > 0 && event.keyCode === 13) {
+                    createListElement();
+                }
+            }
+
+            function toggleDone() {
+                this.classList.toggle("done");
+            }
+
+            function deleteItem() {
+                var child = document.activeElement.parentNode;
+                ul.removeChild(child);
+            }
+
+            function manageGroupTag(tag, event, action) {
+                for (let i = 0; i < tag.length; i++) {
+                    tag[i].addEventListener(event, action);
+                }
+            }
+
+            button.addEventListener("click", addNewItemAfterClick);
+            input.addEventListener("keypress", addNewItemAfterKeypress);
+            manageGroupTag(li, "click", toggleDone);
+            manageGroupTag(deleteBtns, "click", deleteItem);
+        </script>
+        <script>
+            function map() {
+                console.log(lo[0], lo[1]);
+            }
+        </script>
+
+
+</body>
+
+
+</html>

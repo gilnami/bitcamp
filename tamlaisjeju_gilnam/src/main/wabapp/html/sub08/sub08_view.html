@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>탐라는제주 - 숨어 있던 진짜 hot한 제주</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <meta property="og:title" content="탐라는제주">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="탐라는제주 - 숨어 있던 진짜 hot한 제주">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/layout.css" />
+    <!-- sub08 -->
+    <link rel="stylesheet" type="text/css" href="../../css/sub08.css">
+    <!-- logo font -->
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="../../js/common/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <!-- daum map -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=619a7dc4f7d23963aa128663f464c8d5&libraries=services"></script>
+
+    <style type="text/css">
+        @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div id="sub08" class="sub08 container">
+
+        <div id="content">
+
+            <!-- 좋아요 탭 -->
+            <div class="content_wrap">
+                <div class="sns_area clear">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_like_icon"></span>
+                                <strong>좋아요</strong>26</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_zzim_icon"></span>
+                                <strong>찜하기</strong>537</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_review_icon"></span>
+                                <strong>리뷰</strong>114</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_schedule_icon"></span>
+                                <strong>일정등록</strong>0</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_visit_icon"></span>
+                                <strong>방문했어요</strong>57</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_hit_icon"></span>
+                                <strong>조회</strong>19,416</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon view_sns_icon"></span>
+                                <strong>SNS 공유</strong>8</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 지도 -->
+
+                <!-- <div class=map_bb style="width: 100%;height: 400px;background-color: teal;margin-bottom:84px;" style="overflow: hidden;z-index:2; "></div> -->
+                 <div id="map" style="width:100%;height:400px;margin-bottom:84px;"></div>
+            </div>
+
+            <!-- 타임라인 -->
+
+            <div class="t_timeline">
+
+                <nav class="action">
+                    <div class="timeline_content_day fix_day1 day off clear">
+                        <h4> Day 1</h4>
+                        <p>2018.08.02</p>
+                        <p>Day1 경로보기</p>
+                    </div>
+                    <div class="timeline_content_day fix_day2 day off clear">
+                        <h4> Day 2</h4>
+                        <p>2018.08.03</p>
+                        <p>Day2 경로보기</p>
+                    </div>
+                    <div class="timeline_content_day fix_day3 day off clear">
+                        <h4> Day 3</h4>
+                        <p>2018.08.04</p>
+                        <p>Day3 경로보기</p>
+                    </div>
+
+                    <div class="nav_menu">
+
+                        <div class="treemenu">
+                            <div id="day1" level="0" onclick="fnMove('1')" class="lbl_titl">
+                                <span class="lbl ">1일차 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 유채꽃밭 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 해물파스타 </span>
+                            </div>
+                            <div id="day2" level="0" onclick="fnMove('2')" class="lbl_titl">
+                                <span class="lbl"> 2일차 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 카멜리아힐 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 심슨 </span>
+                            </div>
+                            <div id="day3" level="0" onclick="fnMove('3')" class="lbl_titl">
+                                <span class="lbl"> 3일차 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 성산일출봉 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 애월카페 </span>
+                            </div>
+                            <div level="1" class="under">
+                                <span class="lbl"> 지금이순간 </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="context_writer">
+                        <div class="profile large">
+                            <div class="cover">
+                                <img src="https://source.unsplash.com/random/700x300" />
+                                <div class="layer">
+                                    <div class="loader"></div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <div class="profile-pic">
+                                    <img src="../../img/sub08/img4.jpg" />
+                                    <a class="image-wrapper" href="#">
+                                        <form id="profilePictureForm" action="#">
+                                            <input class="hidden-input" id="changePicture" type="file" />
+                                            <label class="edit glyphicon glyphicon-pencil" for="changePicture" type="file" title="Change picture"></label>
+                                        </form>
+                                    </a>
+                                </div>
+                                <div class="username">
+                                    <div class="name">
+                                        <span class="verified"></span>
+                                        <a href="#">@zx3620</a>
+                                    </div>
+                                    <div class="about">모든 제주도를 클리어해보자!!</div>
+                                </div>
+                                <div class="social-btns">
+                                    <a class="btn facebook" href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a class="btn twitter" href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a class="btn google" href="#">
+                                        <i class="fa fa-google"></i>
+                                    </a>
+                                </div>
+                                <div class="prifile_bottom_msg">
+                                    <p>퍼가기</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="auther_post">
+                            <div class="post_section">
+                                <div class="post_topbox clear">
+                                    <div class="post_text">추천 여행기</div>
+                                    <a href="#">모두보기</a>
+                                </div>
+                                <div class="post_content">
+                                    <div class="post_content_imgbox">
+                                        <a href="#">
+                                            <img src="https://source.unsplash.com/random/700x500" />
+                                        </a>
+                                    </div>
+                                    <div class="post_dscrt">
+                                        <a href="#">
+                                            <div class="post_dscrt_text">한여름의 제주도</div>
+                                        </a>
+                                        <a>좋아요 : 142,094</a>
+                                    </div>
+                                </div>
+                                <div class="post_content">
+                                    <div class="post_content_imgbox">
+                                        <a href="#">
+                                            <img src="https://source.unsplash.com/random/700x600" />
+                                        </a>
+                                    </div>
+                                    <div class="post_dscrt">
+                                        <a href="#">
+                                            <div class="post_dscrt_text">애월탐방기</div>
+                                        </a>
+                                        <a>좋아요 : 215,112</a>
+                                    </div>
+                                </div>
+                                <div class="post_content">
+                                    <div class="post_content_imgbox">
+                                        <a href="#">
+                                            <img src="https://source.unsplash.com/random/700x700" />
+                                        </a>
+                                    </div>
+                                    <div class="post_dscrt">
+                                        <a href="#">
+                                            <div class="post_dscrt_text">이국적인 서귀포시</div>
+                                        </a>
+                                        <a>좋아요 : 18,112</a>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+
+
+                <div id="div1" class="day1">
+                    <div class="timeline_content_day c_day1">
+                        <h4> Day 1</h4>
+                        <p>2018.08.02</p>
+                        <p>Day1 경로보기</p>
+                    </div>
+                    <div class="t_timeline_content">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+                        </div>
+
+                        <div class="content_box clear">
+                            <img src="../../img/sub08/jeju1.jpg" alt="jeju1" />
+                            <div class="content_icon">
+                                <p class="contnet_name">유채꽃밭</p>
+                                <p class="content_addr">제주특별시 성산일출봉 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 너무너무 맘에 들었어요 유채꽃밭 꼭 가보세요</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju1.jpg" alt="jeju1" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="t_timeline_content ">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju2.jpg" alt="jeju1" />
+                            <div class="content_icon">
+                                <p class="contnet_name">해물파스타</p>
+                                <p class="content_addr">제주특별시 성산일출봉 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>엄청맛있어요💕
+                                    <br> 해물의 맛 굿굿굿 ㅋ</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju2.jpg" alt="jeju2" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div id="div2" class="day2">
+                    <div class="timeline_content_day c_day2">
+                        <h4> Day 2</h4>
+                        <p>2018.08.03</p>
+                        <p>Day2 경로보기</p>
+                    </div>
+                    <div class="t_timeline_content ">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju3.jpg" alt="jeju3" />
+                            <div class="content_icon">
+                                <p class="contnet_name">카멜리아힐</p>
+                                <p class="content_addr">제주특별시 카멜리아힐 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 엄청좋았어요 좋은시간 베리굿</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju3.jpg" alt="jeju1" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="t_timeline_content ">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju4.jpg" alt="jeju3" />
+                            <div class="content_icon">
+                                <p class="contnet_name">카멜리아힐</p>
+                                <p class="content_addr">제주특별시 카멜리아힐 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 엄청좋았어요 좋은시간 베리굿</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju4.jpg" alt="제주사진" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div id="div3" class="day3">
+                    <div class="timeline_content_day c_day3">
+                        <h4> Day 3</h4>
+                        <p>2018.08.04</p>
+                        <p>Day3 경로보기</p>
+                    </div>
+                    <div class="t_timeline_content">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju1.jpg" alt="제주사진" />
+                            <div class="content_icon">
+                                <p class="contnet_name">카멜리아힐</p>
+                                <p class="content_addr">제주특별시 카멜리아힐 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 엄청좋았어요 좋은시간 베리굿</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju1.jpg" alt="제주사진" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="t_timeline_content ">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju2.jpg" alt="제주사진" />
+                            <div class="content_icon">
+                                <p class="contnet_name">카멜리아힐</p>
+                                <p class="content_addr">제주특별시 카멜리아힐 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 엄청좋았어요 좋은시간 베리굿</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju2.jpg" alt="제주사진" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="t_timeline_content ">
+                        <div class="context_menu">
+                            <span>
+                                <a href="#">#데이트</a>
+                                <a href="#">#포토존</a>
+                                <a href="#">#꽃</a>
+                            </span>
+
+                        </div>
+                        <div class="content_box clear">
+
+                            <img src="../../img/sub08/jeju3.jpg" alt="제주사진" />
+                            <div class="content_icon">
+                                <p class="contnet_name">카멜리아힐</p>
+                                <p class="content_addr">제주특별시 카멜리아힐 근처 11-2</p>
+                            </div>
+                            <div class="content_text">
+                                <p>사진이 정말 이쁘게 찍히는곳💕
+                                    <br> 엄청좋았어요 좋은시간 베리굿</p>
+
+                            </div>
+                        </div>
+                        <div class="t_timeline_content_imgbox">
+                            <figure class="snip0016">
+                                <img src="../../img/sub08/jeju3.jpg" alt="제주사진" />
+                                <figcaption>
+                                    <p>사진더보기</p>
+                                    <a href="#"></a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!--모달-->
+                <!-- 
+                    <div class="fotorama" data-nav="thumbs">
+                        <a href="../../img/sub08/img2.jpg">
+                            <img src="../../img/sub08/img2.jpg">
+                        </a>
+                        <a href="../../img/sub08/img3.JPG">
+                            <img src="../../img/sub08/img3.JPG">
+                        </a>
+                    </div> -->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="footer"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#header").load("../include/sub_header.html")
+            $("#footer").load("../include/sub_footer.html")
+            /* id 지정을 통해서도 가능합니다. 
+             $("#header").load("header.html #navbar")
+             */
+        });
+    </script>
+
+
+    <script>
+        // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+        var infowindow = new daum.maps.InfoWindow({
+            zIndex: 1
+        });
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+                level: 5 // 지도의 확대 레벨
+            };
+
+
+
+        // 지도를 생성합니다    
+        var map = new daum.maps.Map(mapContainer, mapOption);
+
+        // 장소 검색 객체를 생성합니다
+        var ps = new daum.maps.services.Places();
+
+        // 키워드로 장소를 검색합니다
+        ps.keywordSearch('성산일출봉 관광지', placesSearchCB);
+
+        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+        function placesSearchCB(data, status, pagination) {
+            if (status === daum.maps.services.Status.OK) {
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                // LatLngBounds 객체에 좌표를 추가합니다
+                var bounds = new daum.maps.LatLngBounds();
+
+                for (var i = 0; i < data.length; i++) {
+                    displayMarker(data[i]);
+                    bounds.extend(new daum.maps.LatLng(data[i].y, data[i].x));
+                }
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                map.setBounds(bounds);
+            }
+        }
+
+        // 지도에 마커를 표시하는 함수입니다
+        function displayMarker(place) {
+
+            // 마커를 생성하고 지도에 표시합니다
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: new daum.maps.LatLng(place.y, place.x)
+            });
+
+            // 마커에 클릭이벤트를 등록합니다
+            daum.maps.event.addListener(marker, 'click', function () {
+                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name +
+                    '</div>');
+                infowindow.open(map, marker);
+            });
+        }
+
+
+        function relayout() {
+
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }
+    </script> 
+
+    <!-- <script>
+        $('.js-timeline').Timeline({
+            dotsPosition: 'top'
+        });
+
+        // Dots Position Top
+        $('.timeline-2').Timeline({
+            itemClass: 'box-item',
+            dotsPosition: 'top',
+            startItem: 'last'
+        });
+    </script>
+-->
+
+    <script>
+        //왼쪽 fixed
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
+                var container = $('.container').height();
+                var content = $('.t_timeline').height();
+                if ($(window).scrollTop() > container - content) {
+                    if ($(window).scrollTop() > content - 246) {
+                        $('nav').addClass('absolute');
+                        $('nav').removeClass('fixed');
+                        return;
+                    }
+                    $('nav').removeClass('action');
+                    $('nav').removeClass('absolute');
+                    $('nav').addClass('fixed');
+                } else {
+                    $('nav').removeClass('absolute');
+                    $('nav').removeClass('fixed');
+                    $('nav').addClass('action');
+                }
+            });
+        });
+    </script>
+    <script>
+        //왼쪽 fixed
+        $(document).ready(function () {
+            $(window).bind('scroll', function () {
+                var day1 = $('.day1').offset().top;
+                var day2 = $('.day2').offset().top;
+                var day3 = $('.day3').offset().top;
+                var day4 = document.getElementById('day1');
+                var day5 = document.getElementById('day2');
+                var day6 = document.getElementById('day3');
+
+                if ($(document).scrollTop() > day3 - 180) {
+                    $('.day').removeClass('off');
+                    $('.day').addClass('off');
+                    $('.fix_day3').removeClass('off');
+                    $('.fix_day3').addClass('on');
+                    $('.c_day3').addClass('off');
+                    return;
+                }
+                if ($(document).scrollTop() > day2 - 180) {
+                    $('.day').removeClass('off');
+                    $('.day').addClass('off');
+                    $('.fix_day2').removeClass('off');
+                    $('.fix_day2').addClass('on');
+                    $('.c_day3').removeClass('off');
+                    $('.c_day2').addClass('off');
+                    return;
+                }
+
+                if ($(document).scrollTop() > day1 - 180) {
+                    $('.day').removeClass('off');
+                    $('.day').addClass('off');
+                    $('.fix_day1').removeClass('off');
+                    $('.fix_day1').addClass('on');
+                    $('.c_day2').removeClass('off');
+                    $('.c_day1').addClass('off');
+                    return;
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // 아이디 바로가기
+        function fnMove(id) {
+            var offset = $("#div" + id).offset();
+            $('html, body').animate({
+                scrollTop: offset.top - 169
+            }, 400);
+        }
+    </script>
+
+    <script>
+        // 트리메뉴
+        var _createClass = function () {
+            function defineProperties(target, props) {
+                for (var i = 0; i < props.length; i++) {
+                    var descriptor = props[i];
+                    descriptor.enumerable = descriptor.enumerable || false;
+                    descriptor.configurable = true;
+                    if ("value" in descriptor) descriptor.writable = true;
+                    Object.defineProperty(target, descriptor.key, descriptor);
+                }
+            }
+            return function (Constructor, protoProps, staticProps) {
+                if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                if (staticProps) defineProperties(Constructor, staticProps);
+                return Constructor;
+            };
+        }();
+
+        function _classCallCheck(instance, Constructor) {
+            if (!(instance instanceof Constructor)) {
+                throw new TypeError("Cannot call a class as a function");
+            }
+        }
+
+        window.log = function (text) {
+            console.log(text);
+            //$(".console").prepend(text + "<br/>");  
+        };
+
+        var TreeMenu = function () {
+            function TreeMenu($container) {
+                _classCallCheck(this, TreeMenu);
+
+                this.$container = $container;
+                $container.find("[level]").click(this.levelClickHandler.bind(this));
+                var id = 0;
+                $container.find("[level]").each(function (index, item) {
+                    var $item = $(item);
+                    $item.attr("data-treemenu-id", ++id);
+                    this.setOpen($item, false);
+                    if (parseInt($item.attr("level")) > 0) {
+                        this.hideItem($item);
+                    } else {
+                        this.showItem($item);
+                    }
+                }.bind(this));
+            }
+
+            _createClass(TreeMenu, [{
+                key: "levelClickHandler",
+                value: function levelClickHandler(evt) {
+                    var $el = $(evt.currentTarget);
+
+                    if (this.isOpen($el)) {
+                        this.closeItem($el);
+                    } else {
+                        this.openItem($el);
+                    }
+                }
+            }, {
+                key: "getElementTreeMenuId",
+                value: function getElementTreeMenuId($el) {
+                    return $el.attr("data-treemenu-id");
+                }
+            }, {
+                key: "getElementLevel",
+                value: function getElementLevel($el) {
+                    return parseInt($el.attr("level"));
+                }
+            }, {
+                key: "isOpen",
+                value: function isOpen($el) {
+                    return $el.attr("data-treemenu-open") === "1";
+                }
+            }, {
+                key: "setOpen",
+                value: function setOpen($el, to) {
+                    log("set open: " + to);
+                    $el.attr("data-treemenu-open", to ? "1" : "0");
+                }
+            }, {
+                key: "getGroup",
+                value: function getGroup($el) {
+                    log("get group");
+                    //the group is every element that has a higher level than this one
+                    var firstElementLevel = this.getElementLevel($el);
+                    var group = [];
+
+                    this.$container.find("[level]").each(function (index, item) {
+                        var $item = $(item);
+
+                        if (!group.length) {
+                            //first item has not been passed in the loop
+                            if (this.getElementTreeMenuId($el) == this.getElementTreeMenuId(
+                                    $item)) {
+                                //the current item is the parent of the group
+                                group.push($item);
+                            }
+                            //stop this iteration of the loop
+                            return true;
+                        }
+                        //
+                        //if the level of the item equals or is lower then the initial level, 
+                        // we have reached the end of the group
+                        var level = parseInt($item.attr("level"));
+                        if (level <= firstElementLevel) return false;
+                        if (level == firstElementLevel + 1) group.push($item);
+                    }.bind(this));
+                    return group;
+                }
+            }, {
+                key: "closeItem",
+                value: function closeItem($el) {
+                    this.setOpen($el, false);
+                    this.getGroup($el).forEach(function ($item, index) {
+                        if (!index) return true;
+                        this.hideItem($item);
+
+                        //also close its children
+                        this.closeItem($item);
+                    }.bind(this));
+                }
+            }, {
+                key: "openItem",
+                value: function openItem($el) {
+                    this.setOpen($el);
+                    $('.under').removeClass('opened');
+                    $('.under').addClass('closed');
+                    $('.lbl_titl').removeClass('color_active');
+                    $('.lbl_titl').removeClass('color_off');
+                    ($el).addClass('color_off');
+                    ($el).addClass('color_active');
+                    this.getGroup($el).forEach(function ($item, index) {
+                        if (!index) return true;
+                        this.showItem($item);
+                    }.bind(this));
+                }
+            }, {
+                key: "showItem",
+                value: function showItem($el) {
+                    $el.removeClass("closed");
+                    $el.addClass("opened");
+                }
+            }, {
+                key: "hideItem",
+                value: function hideItem($el) {
+                    $el.removeClass('opened');
+                    $el.addClass("closed");
+                }
+            }]);
+
+            return TreeMenu;
+        }();
+
+        var menu = new TreeMenu($(".treemenu"));
+    </script>
+
+
+
+</body>
+
+
+</html>

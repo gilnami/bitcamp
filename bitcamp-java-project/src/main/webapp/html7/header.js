@@ -5,16 +5,21 @@ $.get("/bitcamp-java-project/html7/header.html", (data) => {
 });
 
 function loadLoginUser() {
+	
 	$.getJSON("/bitcamp-java-project/json/auth/loginUser", (data) => {
-			$("#username").text(data.id);
-			$("#logoutBtn").click((e) => {
-				window.alert("okok");
-				e.preventDefault(); // 클릭했을 때 원래 하던일은 하지말라!
-				$.get("/bitcamp-java-project/json/auth/logout", () => {
-					location.href = "/bitcamp-java-project/html7/auth/login.html";
+		$("#username").text(data.id);
+		$("#logoutBtn").click((e) => {
+			e.preventDefault(); // 클릭했을 때 원래 하던 일이 있는데 그것을 하지 말라!
+			$.get("/bitcamp-java-project/json/auth/logout", () => {
+				location.href = "/bitcamp-java-project/html7/auth/login.html";
 			});
 		});
 	}).fail(() => {
 		location.href = "/bitcamp-java-project/html7/auth/login.html";
 	});
+	
 }
+
+
+
+

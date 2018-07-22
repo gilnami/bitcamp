@@ -19,10 +19,8 @@
 <script src="../header.js"></script>
 <script>
 
-console.log(document.cookie);
-
 $.getJSON("../../json/board/list", (data) => {
-	for (var item of data) {
+    for (var item of data) {
         $("<tr>")
             .html("<td>" + item.no + "</td>" + 
 	            "<td><a href='form.html?no=" + item.no + "'>" + item.title + "</a></td>" + 

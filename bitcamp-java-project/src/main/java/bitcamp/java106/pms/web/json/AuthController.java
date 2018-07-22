@@ -53,12 +53,12 @@ public class AuthController {
         }
         response.addCookie(cookie);
         
-        HashMap<Object, String> result = new HashMap<>();
+        HashMap<String,Object> result = new HashMap<>();
         
         if (memberService.isExist(id, password)) { // 로그인 성공!
             session.setAttribute("loginUser", memberService.get(id));
             result.put("state", "success");
-        } else {
+        } else { // 로그인 실패!
             session.invalidate();
             result.put("state", "fail");
         }
@@ -67,6 +67,7 @@ public class AuthController {
     
     @RequestMapping("/logout")
     public void logout(HttpSession session) throws Exception {
+        // 세션을 꺼내 무효화시킨다.
         session.invalidate();
     }
 }
