@@ -95,9 +95,38 @@ public class WeatherController {
             JSONObject temp_item = (JSONObject)parse_item.get(5); // 기온
             JSONObject wsd_item = (JSONObject)parse_item.get(9); // 풍속
             
-            long vec = (Long) vec_item.get("obsrValue");
-            String vector;
+            long sky = (Long) sky_item.get("obsrValue");
+            long rain = (Long) rain_item.get("obsrValue");
             
+            System.out.println(sky);
+            
+            String weather;
+            if (rain == 1) {
+                weather = "비";
+            } else if (rain == 2) {
+                weather = "눈비";
+            } else if (rain == 3){
+                weather = "눈";
+            } else if (sky == 1) {
+                weather = "맑음";
+            } else if (sky == 2) {
+                weather = "구름조금";
+            } else if (sky == 3) {
+                weather = "구름많음";
+            } else {
+                weather = "흐림";
+            }
+            
+            
+            System.out.println(weather);
+            
+            
+            
+            
+            
+            long vec = (Long) vec_item.get("obsrValue");
+            
+            String vector;
             if(337 < vec && vec < 23) {
                 vector = "북";
             } else if(22 < vec && vec < 68) {
@@ -114,8 +143,7 @@ public class WeatherController {
                 vector = "서";
             } vector = "북서";
             
-            map.put("rain", rain_item.get("obsrValue").toString());
-            map.put("sky", sky_item.get("obsrValue").toString());
+            map.put("wth", weather);
             map.put("temp", temp_item.get("obsrValue").toString());
             map.put("vec", vector);
             map.put("wsd", wsd_item.get("obsrValue").toString());
@@ -123,6 +151,7 @@ public class WeatherController {
             }catch(Exception e){
                 System.out.println(e);
             }
+        System.out.println(map);
         return map;
         }
     
