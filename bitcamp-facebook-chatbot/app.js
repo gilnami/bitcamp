@@ -148,34 +148,7 @@ function handleMessage(sender_psid, received_message) {
         }
       }
     }
-  } else if (received_message.text == 'menu') {
-	  response = {
-		      "attachment": {
-		        "type": "template",
-		        "payload": {
-		          "template_type": "generic",
-		          "elements": [{
-		            "title": "매뉴선택",
-		            "subtitle": "매뉴를 선택해주세요.",
-		            "image_url": attachment_url,
-		            "buttons": [
-		              {
-		                "type": "postback",
-		                "title": "치킨!",
-		                "payload": "menu01",
-		              },
-		              {
-		                "type": "postback",
-		                "title": "피자!",
-		                "payload": "menu02",
-		              }
-		            ],
-		          }]
-		        }
-		      }
-		    }
   }
-  
   
   // Send the response message
   callSendAPI(sender_psid, response);    
