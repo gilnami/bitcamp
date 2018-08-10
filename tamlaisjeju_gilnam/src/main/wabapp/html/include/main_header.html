@@ -47,22 +47,6 @@
                                 <button type="button" class="btn_login fb"><span>페이스북으로 로그인</span></button>
                                 
                                 <button type="button" class="btn_login kt"><span><a id="kakao-login-btn">카카오톡으로 로그인</a></span></button>
-                                <script type='text/javascript'>
-								  //<![CDATA[
-								    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-								    Kakao.init('cccee00c7c2c1125ce4e68ddd47e6a2d');
-								    // 카카오 로그인 버튼을 생성합니다.
-								    Kakao.Auth.createLoginButton({
-								      container: '#kakao-login-btn',
-								      success: function(authObj)  {
-								        alert(JSON.stringify(authObj));
-								      },
-								      fail: function(err) {
-								         alert(JSON.stringify(err));
-								      }
-								    });
-								  //]]>
-								</script>
                                 
                                 <button type="button" class="btn_login ig"><span>Google로 로그인</span></button>
                         </div>
