@@ -120,8 +120,7 @@ function handleMessage(sender_psid, received_message) {
     response = {
       "text": '저도 반갑습니다.'
     }
-  } else if {
-	  (received_message.text == 'menu') {
+  } else if (received_message.text == 'menu') {
 		  response = {
 			  "attachment": {
 			        "type": "template",
@@ -153,8 +152,7 @@ function handleMessage(sender_psid, received_message) {
 			      }
 		  }
 	  }
-  }
-	  else if (received_message.attachments) {
+  } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
     response = {
