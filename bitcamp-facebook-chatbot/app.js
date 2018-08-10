@@ -114,13 +114,47 @@ function handleMessage(sender_psid, received_message) {
   let response;
   
   // Checks if the message contains text
-  if (received_message.text) {    
+  if (received_message.text == 'hello') {    
     // Create the payload for a basic text message, which
     // will be added to the body of our request to the Send API
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": '저도 반갑습니다.'
     }
-  } else if (received_message.attachments) {
+  } else if {
+	  (received_message.text == 'menu') {
+		  response = {
+			  "attachment": {
+			        "type": "template",
+			        "payload": {
+			          "template_type": "generic",
+			          "elements": [{
+			            "title": "어떤 메뉴를 원하시나요?",
+			            "subtitle": "아래에 원하는 메뉴를 선택해주세요.",
+			            "image_url": attachment_url,
+			            "buttons": [
+			              {
+			                "type": "postback",
+			                "title": "치킨!",
+			                "payload": "menu01",
+			              },
+			              {
+			                "type": "postback",
+			                "title": "피자!",
+			                "payload": "menu02",
+			              },
+			              {
+			                "type": "postback",
+			                "title": "고기!",
+			                "payload": "menu03",
+				          }
+			            ],
+			          }]
+			        }
+			      }
+		  }
+	  }
+  }
+	  else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
     response = {
